@@ -1,0 +1,88 @@
+<div class="max-w-6xl mx-auto my-10 p-4">
+  
+  <div class="flex flex-wrap justify-between items-center gap-4 mb-6 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+    <div class="flex items-center gap-3">
+      <div class="bg-gray-900 text-yellow-400 p-2.5 rounded-xl font-mono text-xs font-bold">&lt;/&gt;</div>
+      <div>
+        <h2 class="text-lg font-bold text-gray-800">Minificador CSS / JavaScript</h2>
+        <p class="text-xs text-gray-400">Reduce el tamaño de tus scripts y hojas de estilo al instante</p>
+      </div>
+    </div>
+
+    <div class="flex bg-gray-100 p-1 rounded-xl border border-gray-200">
+      <button 
+        (click)="cambiarTipo('css')" 
+        [ngClass]="tipoCodigo === 'css' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-900'"
+        class="px-4 py-1.5 rounded-lg text-xs font-bold transition">
+        CSS
+      </button>
+      <button 
+        (click)="cambiarTipo('js')" 
+        [ngClass]="tipoCodigo === 'js' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-900'"
+        class="px-4 py-1.5 rounded-lg text-xs font-bold transition">
+        JavaScript
+      </button>
+    </div>
+
+    <div class="flex gap-2">
+      <button (click)="procesarCodigo()" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-bold hover:bg-blue-700 transition shadow-sm">
+        <i class="fa-solid fa-bolt mr-1.5"></i> Minificar
+      </button>
+      <button (click)="limpiar()" class="px-4 py-2 bg-gray-100 text-gray-500 rounded-xl text-sm font-bold hover:bg-gray-200 transition">
+        Limpiar
+      </button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+    <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+      <span class="text-xs text-gray-400 block uppercase tracking-wider font-semibold">Tamaño Original</span>
+      <span class="text-xl font-bold text-gray-700 font-mono">{{ stats.originalSize }} <span class="text-xs font-sans text-gray-400">bytes</span></span>
+    </div>
+    <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+      <span class="text-xs text-gray-400 block uppercase tracking-wider font-semibold">Tamaño Minificado</span>
+      <span class="text-xl font-bold text-green-600 font-mono">{{ stats.minifiedSize }} <span class="text-xs font-sans text-gray-400">bytes</span></span>
+    </div>
+    <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+      <span class="text-xs text-gray-400 block uppercase tracking-wider font-semibold">Compresión / Ahorro</span>
+      <span class="text-xl font-bold text-blue-600 font-mono">{{ stats.ahorro }}%</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+    <div class="flex flex-col">
+      <div class="bg-gray-800 text-gray-400 text-xs font-bold px-4 py-3 rounded-t-2xl flex justify-between items-center border-b border-gray-700">
+        <span class="uppercase tracking-wider">Código Fuente Completo</span>
+        <span class="text-xs text-gray-500 font-mono">Modo: {{ tipoCodigo | uppercase }}</span>
+      </div>
+      <textarea 
+        [(ngModel)]="codigoInput" 
+        (input)="procesarCodigo()"
+        class="w-full h-96 p-4 bg-gray-950 text-gray-100 font-mono text-sm rounded-b-2xl outline-none focus:ring-2 focus:ring-blue-500 resize-none border-t-0 shadow-inner"
+        [placeholder]="tipoCodigo === 'css' ? '.clase {\n  margin: 10px;\n  padding: 0px;\n}' : 'function calcular() {\n  return 10 + 20;\n}'"></textarea>
+    </div>
+
+    <div class="flex flex-col">
+      <div class="bg-gray-900 text-gray-400 text-xs font-bold px-4 py-3 rounded-t-2xl flex justify-between items-center border-b border-gray-800">
+        <span class="uppercase tracking-wider">Código Optimizado</span>
+        <button 
+          *ngIf="codigoOutput" 
+          (click)="copiarAlPortapapeles()" 
+          [disabled]="copiado"
+          [ngClass]="copiado ? 'text-green-400' : 'text-gray-400 hover:text-white'"
+          class="text-xs transition flex items-center gap-1 font-sans">
+          <i [ngClass]="copiado ? 'fa-solid fa-check' : 'fa-solid fa-copy'"></i>
+          {{ copiado ? '¡Copiado!' : 'Copiar Resultado' }}
+        </button>
+      </div>
+      <textarea 
+        readonly
+        [value]="codigoOutput"
+        class="w-full h-96 p-4 bg-gray-900 text-yellow-300 font-mono text-sm rounded-b-2xl outline-none resize-none border-t-0 shadow-inner select-all"
+        placeholder="El código minificado aparecerá aquí en una sola línea..."></textarea>
+    </div>
+
+  </div>
+
+</div>

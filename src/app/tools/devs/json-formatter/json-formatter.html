@@ -1,0 +1,68 @@
+<div class="max-w-6xl mx-auto my-10 p-4">
+  
+  <div class="flex flex-wrap justify-between items-center gap-4 mb-6 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+    <div class="flex items-center gap-3">
+      <div class="bg-gray-900 text-green-400 p-2.5 rounded-xl font-mono text-xs font-bold">{{ '{' }} {{ '}' }}</div>
+      <div>
+        <h2 class="text-lg font-bold text-gray-800">Formateador y Validador JSON</h2>
+        <p class="text-xs text-gray-400">Inspecciona, limpia y embellece tus estructuras de datos</p>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <button (click)="procesarJson(2)" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-bold hover:bg-blue-700 transition shadow-sm">
+        <i class="fa-solid fa-code mr-1.5"></i> Formatear
+      </button>
+      <button (click)="minificarJson()" class="px-4 py-2 bg-gray-800 text-gray-200 rounded-xl text-sm font-bold hover:bg-gray-900 transition">
+        <i class="fa-solid fa-compress mr-1.5"></i> Minificar
+      </button>
+      <button (click)="limpiar()" class="px-4 py-2 bg-gray-100 text-gray-500 rounded-xl text-sm font-bold hover:bg-gray-200 transition">
+        Limpiar
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="esValido === true" class="mb-6 p-4 bg-green-50 border border-green-200 rounded-2xl flex items-center gap-3 text-sm text-green-700">
+    <i class="fa-solid fa-circle-check text-green-500 text-lg"></i>
+    <span class="font-medium">¡JSON Válido y structured correctamente!</span>
+  </div>
+
+  <div *ngIf="esValido === false" class="mb-6 p-4 bg-red-50 border border-red-200 rounded-2xl flex items-start gap-3 text-sm text-red-700">
+    <i class="fa-solid fa-circle-exclamation text-red-500 text-lg mt-0.5"></i>
+    <div>
+      <span class="font-bold block">Error de Sintaxis:</span>
+      <span class="font-mono text-xs">{{ errorMensaje }}</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+    <div class="flex flex-col">
+      <div class="bg-gray-800 text-gray-400 text-xs font-bold px-4 py-3 rounded-t-2xl flex justify-between items-center border-b border-gray-700">
+        <span class="uppercase tracking-wider">Código JSON Sucio / Crudo</span>
+      </div>
+      <textarea 
+        [(ngModel)]="jsonInput" 
+        (input)="procesarJson(2)"
+        class="w-full h-96 p-4 bg-gray-950 text-gray-100 font-mono text-sm rounded-b-2xl outline-none focus:ring-2 focus:ring-blue-500 resize-none border-t-0 shadow-inner"
+        placeholder='Pegar JSON aquí... Ejemplo: {"id":1,"nombre":"Mini Apps"}'></textarea>
+    </div>
+
+    <div class="flex flex-col">
+      <div class="bg-gray-900 text-gray-400 text-xs font-bold px-4 py-3 rounded-t-2xl flex justify-between items-center border-b border-gray-800">
+        <span class="uppercase tracking-wider">Resultado Formateado</span>
+        <button 
+          *ngIf="jsonOutput" 
+          (click)="copiarAlPortapapeles()" 
+          [disabled]="copiado"
+          [ngClass]="copiado ? 'text-green-400' : 'text-gray-400 hover:text-white'"
+          class="text-xs transition flex items-center gap-1 font-sans">
+          <i [ngClass]="copiado ? 'fa-solid fa-check' : 'fa-solid fa-copy'"></i>
+          {{ copiado ? '¡Copiado!' : 'Copiar' }}
+        </button>
+      </div>
+      <pre class="w-full h-96 p-4 bg-gray-900 text-green-400 font-mono text-sm rounded-b-2xl overflow-auto border-t-0 shadow-inner select-all whitespace-pre-wrap">{{ jsonOutput || 'El resultado aparecerá aquí automáticamente...' }}</pre>
+    </div>
+
+  </div>
+
+</div>

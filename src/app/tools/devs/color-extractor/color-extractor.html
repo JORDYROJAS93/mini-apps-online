@@ -1,0 +1,89 @@
+<div class="max-w-5xl mx-auto my-10 p-4">
+  
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    
+    <div class="lg:col-span-2 space-y-4">
+      <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+        <h2 class="text-xl font-bold text-gray-800 mb-2">Extractor de Colores de Imágenes</h2>
+        <p class="text-sm text-gray-400 mb-6">Sube una imagen y haz clic en cualquier parte de ella para capturar su código de color exacto.</p>
+
+        <div *ngIf="!imageSrc" class="border-2 border-dashed border-gray-200 rounded-2xl p-10 text-center hover:border-blue-500 transition relative bg-gray-50/50">
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer">
+          <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-300 mb-3 block"></i>
+          <span class="text-sm font-medium text-gray-500 block">Arrastra tu imagen aquí o haz clic para explorar</span>
+          <span class="text-xs text-gray-400 block mt-1">Sostiene formatos PNG, JPG, WEBP</span>
+        </div>
+
+        <div *ngIf="imageSrc" class="relative rounded-2xl overflow-hidden border border-gray-100 shadow-inner bg-stone-100 flex justify-center">
+          <canvas 
+            #canvasRef 
+            (click)="obtenerColorPixel($event)"
+            class="max-w-full h-auto cursor-crosshair block transition-opacity duration-300"></canvas>
+        </div>
+        
+        <div *ngIf="imageSrc" class="mt-4 flex justify-between">
+          <button (click)="imageSrc = null; paletaSugerida = []" class="text-xs font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
+            <i class="fa-solid fa-trash-can"></i> Cambiar imagen
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      
+      <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-6">
+        <h3 class="font-bold text-gray-800 text-sm uppercase tracking-wider">Color Detectado</h3>
+        
+        <div 
+          [style.backgroundColor]="colorSeleccionadoHex" 
+          class="w-full h-28 rounded-2xl shadow-inner transition-all duration-200 border border-black/5 flex items-end p-4">
+          <span class="text-xs font-bold text-white bg-black/30 backdrop-blur-sm px-2.5 py-1 rounded-md tracking-widest font-mono">
+            {{ colorSeleccionadoHex | uppercase }}
+          </span>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Código HEX</label>
+            <div class="flex gap-2">
+              <input type="text" readonly [value]="colorSeleccionadoHex | uppercase" class="w-full p-2.5 bg-gray-50 font-mono text-sm border border-gray-200 rounded-xl outline-none text-gray-700">
+              <button (click)="copiarTexto(colorSeleccionadoHex)" class="px-3 bg-gray-100 hover:bg-gray-200 rounded-xl text-gray-600 transition text-sm">
+                <i class="fa-solid fa-copy"></i>
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Código RGB</label>
+            <div class="flex gap-2">
+              <input type="text" readonly [value]="colorSeleccionadoRgb" class="w-full p-2.5 bg-gray-50 font-mono text-sm border border-gray-200 rounded-xl outline-none text-gray-700">
+              <button (click)="copiarTexto(colorSeleccionadoRgb)" class="px-3 bg-gray-100 hover:bg-gray-200 rounded-xl text-gray-600 transition text-sm">
+                <i class="fa-solid fa-copy"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="copiado" class="text-center text-xs font-bold text-green-600 bg-green-50 p-2 rounded-xl transition-all">
+          <i class="fa-solid fa-circle-check mr-1"></i> ¡Copiado al portapapeles!
+        </div>
+      </div>
+
+      <div *ngIf="paletaSugerida.length > 0" class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+        <h3 class="font-bold text-gray-800 text-sm uppercase tracking-wider mb-4">Paleta de la Imagen</h3>
+        <div class="flex rounded-2xl overflow-hidden h-12 border border-black/5">
+          <div 
+            *ngFor="let col of paletaSugerida" 
+            [style.backgroundColor]="col"
+            (click)="colorSeleccionadoHex = col; actualizarColores(255,255,255)" 
+            class="flex-1 cursor-pointer group relative hover:flex-[1.5] transition-all duration-200"
+            [title]="col">
+          </div>
+        </div>
+        <span class="text-[10px] text-gray-400 block text-center mt-2 font-medium">Haz clic en una barra para inspeccionar su código</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>

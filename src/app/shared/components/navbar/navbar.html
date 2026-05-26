@@ -1,0 +1,75 @@
+<nav class="bg-white shadow-md border-b border-gray-100 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      
+      <div class="flex items-center">
+        <a routerLink="/" class="flex-shrink-0 flex items-center space-x-2">
+          <span class="text-2xl font-black text-blue-600 tracking-tighter">MINI APPS</span>
+          <span class="hidden md:block text-sm font-medium text-gray-500 uppercase tracking-widest">Online</span>
+        </a>
+      </div>
+      
+      <div class="flex items-center space-x-1 md:space-x-2">
+        
+        <a routerLink="/" 
+           routerLinkActive="text-blue-600 bg-blue-50" 
+           [routerLinkActiveOptions]="{exact: true}" 
+           class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition">
+           Inicio
+        </a>
+        
+        <div class="relative group py-2">
+          <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition focus:outline-none">
+            <span>Finanzas</span>
+            <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="absolute left-0 mt-0 w-52 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform scale-95 group-hover:scale-100">
+            <a routerLink="/igv" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Calculadora de IGV</a>
+            <a routerLink="/honorarios" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Recibo por Honorarios</a>
+            <hr class="border-gray-100 my-1">
+            <a routerLink="/conversor-monedas" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition text-left">💵 Conversor de Monedas</a>
+            <a routerLink="/loan-calculator" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition text-left">📉 Calc. de Préstamos</a>
+          </div>
+        </div>
+
+        <div class="relative group py-2">
+          <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition focus:outline-none">
+            <span>Marketing</span>
+            <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="absolute left-0 mt-0 w-52 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform scale-95 group-hover:scale-100">
+            <a routerLink="/qr-generator" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Generador QR</a>
+            <a routerLink="/whatsapp-link" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Enlaces de WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="relative group py-2">
+          <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition focus:outline-none">
+            <span>Herramientas</span>
+            <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="absolute right-0 md:left-0 mt-0 w-56 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform scale-95 group-hover:scale-100">
+            <a routerLink="/word-a-html" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Convertidor Word a HTML</a>
+            <a routerLink="/counter-text" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Contador de Caracteres</a>
+            <a routerLink="/password-gen" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Generador de Contraseñas</a>
+            <hr class="border-gray-100 my-1">
+            <a routerLink="/conversor-unidades" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition text-left">📏 Conversor de Unidades</a>
+          </div>
+        </div>
+
+        <div class="relative group py-2">
+          <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition focus:outline-none">
+            <span class="text-gray-600 group-hover:text-blue-600">Devs</span>
+            <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="absolute right-0 mt-0 w-52 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform scale-95 group-hover:scale-100">
+            <a routerLink="/json-formatter" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition text-left">📦 Formateador JSON</a>
+            <a routerLink="/code-minimizer" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition text-left">⚡ Minificador CSS/JS</a>
+            <a routerLink="/color-extractor" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition text-left">🎨 Extractor de Colores</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>

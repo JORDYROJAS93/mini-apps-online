@@ -1,0 +1,88 @@
+<div class="container-wrapper">
+  <div class="page-header">
+    <h1>Word to HTML</h1>
+    <p>Convierte tus documentos Word a HTML limpio</p>
+  </div>
+
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <input #fileInput type="file" (change)="onFileSelected($event)" accept=".docx,.doc" />
+      <button (click)="triggerFileInput()" [disabled]="isLoading" class="btn btn-primary">
+        <i class="fas fa-upload"></i> Subir Word
+      </button>
+      <button (click)="insertImage()" class="btn btn-secondary">
+        <i class="fas fa-image"></i> Imagen URL
+      </button>
+      <button (click)="insertVideo()" class="btn btn-secondary">
+        <i class="fab fa-youtube"></i> YouTube
+      </button>
+      <button (click)="limpiarEditor()" class="btn btn-secondary">
+        <i class="fas fa-trash-alt"></i> Limpiar
+      </button>
+    </div>
+
+    <div class="toolbar-right">
+      <button (click)="descargarHTML()" [disabled]="!codeContent" class="btn btn-success">
+        <i class="fas fa-download"></i> Descargar
+      </button>
+      <button (click)="copiarAlPortapapeles()" [disabled]="!codeContent" class="btn btn-indigo">
+        <i class="fas fa-copy"></i> Copiar HTML
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-overlay">
+    <div class="loading-spinner">
+      <i class="fas fa-spinner fa-spin"></i>
+      <p>Procesando...</p>
+    </div>
+  </div>
+
+  <div class="editors-grid">
+    <!-- Editor Visual -->
+    <div class="editor-panel">
+      <div class="panel-header">
+        <h3><i class="fas fa-eye"></i> Editor Visual</h3>
+        <span class="panel-stats">{{ wordCount }} palabras | {{ charCount }} caracteres</span>
+      </div>
+      <div class="visual-editor-container">
+        <!-- USAMOS [ngModel] UNIDIRECCIONAL para evitar que el cursor salte -->
+        <quill-editor 
+          [ngModel]="visualContent"
+          [modules]="editorModules"
+          format="html"
+          placeholder="Escribe o pega tu contenido aquí..."
+          (onEditorCreated)="onEditorCreated($event)"
+          (onContentChanged)="onContentChanged($event)"
+        ></quill-editor>
+      </div>
+    </div>
+
+    <!-- Editor Código -->
+    <div class="editor-panel code-editor-panel">
+      <div class="panel-header">
+        <h3><i class="fas fa-code"></i> Código HTML</h3>
+        <span class="panel-stats">{{ codeContent.length }} bytes</span>
+      </div>
+      <div class="code-editor-wrapper">
+        <div class="line-numbers">
+          <div *ngFor="let line of getLineNumbersArray(); let i = index">{{ i + 1 }}</div>
+        </div>
+        <!-- USAMOS (input) para detectar cuando ESCRIBES TÚ, no cuando se actualiza por código -->
+        <textarea
+          [(ngModel)]="codeContent"
+          (input)="onCodeChange()"
+          class="code-textarea"
+          spellcheck="false"
+          placeholder="<!-- El código HTML aparecerá aquí -->"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-footer">
+    <div class="info-item"><i class="fas fa-check-circle"></i> HTML5 Limpio</div>
+    <div class="info-item"><i class="fas fa-bolt"></i> Conversión Rápida</div>
+    <div class="info-item"><i class="fas fa-mobile-alt"></i> Responsive</div>
+  </div>
+</div>

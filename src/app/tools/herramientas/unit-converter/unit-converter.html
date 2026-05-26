@@ -1,0 +1,56 @@
+<div class="max-w-4xl mx-auto my-10 p-4">
+  <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+    
+    <div class="flex bg-gray-50 border-b border-gray-100 p-2 gap-2">
+      <button 
+        *ngFor="let cat of categorias" 
+        (click)="categoriaSeleccionada = cat; onCategoriaChange()"
+        [ngClass]="{
+          'bg-white text-blue-600 shadow-sm font-bold': categoriaSeleccionada === cat,
+          'text-gray-500 hover:bg-gray-100': categoriaSeleccionada !== cat
+        }"
+        class="flex-1 py-3 px-4 rounded-2xl text-sm transition-all duration-200 uppercase tracking-wider font-medium text-center">
+        <i class="mr-2" [ngClass]="{
+          'fa-solid fa-ruler': cat === 'Longitud',
+          'fa-solid fa-weight-hanging': cat === 'Peso',
+          'fa-solid fa-temperature-half': cat === 'Temperatura'
+        }"></i>
+        {{ cat }}
+      </button>
+    </div>
+
+    <div class="p-8 space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative">
+        
+        <div class="space-y-3">
+          <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider">Desde</label>
+          <select [(ngModel)]="unidadOrigen" (change)="convertir()" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-gray-700 font-medium">
+            <option *ngFor="let uni of unidadesPorCategoria[categoriaSeleccionada]" [value]="uni">{{ uni }}</option>
+          </select>
+          <input type="number" [(ngModel)]="valorOrigen" (input)="convertir()" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-2xl font-bold text-gray-800 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="0">
+        </div>
+
+        <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-50 text-blue-600 w-10 h-10 rounded-full border border-blue-100 items-center justify-center shadow-sm z-10">
+          <i class="fa-solid fa-right-left"></i>
+        </div>
+
+        <div class="space-y-3">
+          <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider">A</label>
+          <select [(ngModel)]="unidadDestino" (change)="convertir()" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-gray-700 font-medium">
+            <option *ngFor="let uni of unidadesPorCategoria[categoriaSeleccionada]" [value]="uni">{{ uni }}</option>
+          </select>
+          <div class="w-full p-4 bg-blue-50/50 border border-blue-100/50 rounded-xl text-2xl font-black text-blue-600 min-h-[64px] flex items-center">
+            {{ valorDestino }}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bg-gray-50 p-4 rounded-2xl flex items-center gap-3 text-sm text-gray-500">
+        <i class="fa-solid fa-circle-info text-blue-500"></i>
+        <span>Los valores calculados incluyen redondeo automático para garantizar la máxima precisión de pantalla.</span>
+      </div>
+    </div>
+
+  </div>
+</div>

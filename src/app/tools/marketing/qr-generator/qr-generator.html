@@ -1,0 +1,12 @@
+<div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800">Generador de QR</h2>
+  <input type="text" [(ngModel)]="texto" (input)="generarQR()" placeholder="Escribe un enlace o texto..."
+    class="w-full p-3 border border-gray-300 rounded-xl mb-4 focus:ring-2 focus:ring-blue-500 outline-none">
+  
+  <div *ngIf="qrImage" class="flex flex-col items-center animate-fade-in">
+    <img [src]="qrImage" class="border-4 border-gray-50 rounded-lg shadow-sm">
+    <button (click)='descargarQR()' class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition">
+      Descargar PNG
+    </button>
+  </div>
+</div>
