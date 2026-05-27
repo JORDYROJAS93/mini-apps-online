@@ -2,5 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Importar Quill */
-@import 'quill/dist/quill.snow.css';
