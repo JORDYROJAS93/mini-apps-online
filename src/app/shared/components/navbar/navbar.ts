@@ -8,4 +8,16 @@ import { RouterLink, RouterLinkActive,  } from '@angular/router';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  // Estado para el menú hamburguesa en móviles
+  menuAbierto: boolean = false;
+
+  toggleMenu() {
+    this.menuAbierto = !this.menuAbierto;
+  }
+
+  cerrarMenu() {
+    this.menuAbierto = false;
+  }
+
+}
