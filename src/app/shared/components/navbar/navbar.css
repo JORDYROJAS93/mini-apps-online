@@ -1,0 +1,45 @@
+/* --- ESTILOS GENERALES Y ESCRITORIO --- */
+
+.nav-link-desktop {
+  @apply text-gray-600 hover:text-blue-600 px-3 py-2 rounded-xl text-sm font-medium transition;
+}
+
+.nav-dropdown-btn {
+  @apply flex items-center space-x-1 text-gray-600 hover:text-blue-600 px-3 py-2 rounded-xl text-sm font-medium transition focus:outline-none;
+}
+
+.nav-dropdown-container {
+  @apply absolute left-0 mt-0 w-52 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform scale-95 group-hover:scale-100;
+}
+
+/* Para el submenú de Herramientas y Devs que se alinean a la derecha */
+.nav-dropdown-container.align-right {
+  @apply right-0 left-auto;
+}
+
+.dropdown-link {
+  @apply block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition text-left;
+}
+
+
+/* --- ESTILOS RESPONSIVOS PARA MÓVILES --- */
+
+.mobile-menu-container {
+  @apply md:hidden bg-gray-50 border-t border-gray-100 px-4 pt-2 pb-6 space-y-2 shadow-inner;
+}
+
+.mobile-home-link {
+  @apply block px-3 py-2.5 text-base font-semibold text-gray-700 hover:bg-white hover:text-blue-600 rounded-xl transition;
+}
+
+.mobile-accordion-btn {
+  @apply w-full flex justify-between items-center px-3 py-2.5 rounded-xl text-sm font-bold text-gray-700 hover:bg-white transition focus:outline-none;
+}
+
+.mobile-submenu-box {
+  @apply pl-4 space-y-1 bg-white/50 rounded-xl py-1.5 border border-gray-100;
+}
+
+.mobile-submenu-link {
+  @apply block px-4 py-2 text-sm text-gray-600 hover:text-blue-600 transition;
+}

@@ -4,11 +4,7 @@
       
       <div class="flex items-center">
         <a routerLink="/" (click)="cerrarMenu()" class="flex-shrink-0 flex items-center space-x-3 group">
-          <img 
-            src="/assets/logo.png" 
-            alt="Logo Mini Apps" 
-            class="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-          />
+          <img src="/assets/logo.png" alt="Logo Mini Apps" class="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
           <span class="hidden sm:block text-xs font-semibold text-gray-400 uppercase tracking-widest bg-gray-50 px-2 py-0.5 rounded-md border border-gray-100">
             Online
           </span>
@@ -17,69 +13,58 @@
       
       <div class="hidden md:flex items-center space-x-1 lg:space-x-2">
         
-        <a routerLink="/" 
-           routerLinkActive="text-blue-600 bg-blue-50 font-semibold" 
-           [routerLinkActiveOptions]="{exact: true}" 
-           class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-xl text-sm font-medium transition">
+        <a routerLink="/" routerLinkActive="text-blue-600 bg-blue-50 font-semibold" [routerLinkActiveOptions]="{exact: true}" class="nav-link-desktop">
            Inicio
         </a>
         
         <div class="relative group py-2">
-          <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-600 px-3 py-2 rounded-xl text-sm font-medium transition focus:outline-none">
+          <button class="nav-dropdown-btn">
             <span>Finanzas</span>
-            <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
+            <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
-          <div class="absolute left-0 mt-0 w-52 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform scale-95 group-hover:scale-100">
-            <a routerLink="/igv" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Calculadora de IGV</a>
-            <a routerLink="/honorarios" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Recibo por Honorarios</a>
+          <div class="nav-dropdown-container">
+            <a routerLink="/igv" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">Calculadora de IGV</a>
+            <a routerLink="/honorarios" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">Recibo por Honorarios</a>
             <hr class="border-gray-100 my-1">
-            <a routerLink="/conversor-monedas" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition text-left">💵 Conversor de Monedas</a>
-            <a routerLink="/loan-calculator" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition text-left">📉 Calc. de Préstamos</a>
+            <a routerLink="/conversor-monedas" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">💵 Conversor de Monedas</a>
+            <a routerLink="/loan-calculator" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">📉 Calc. de Préstamos</a>
           </div>
         </div>
 
         <div class="relative group py-2">
-          <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-600 px-3 py-2 rounded-xl text-sm font-medium transition focus:outline-none">
+          <button class="nav-dropdown-btn">
             <span>Marketing</span>
-            <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
+            <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
-          <div class="absolute left-0 mt-0 w-52 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform scale-95 group-hover:scale-100">
-            <a routerLink="/qr-generator" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Generador QR</a>
-            <a routerLink="/whatsapp-link" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Enlaces de WhatsApp</a>
+          <div class="nav-dropdown-container">
+            <a routerLink="/qr-generator" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">Generador QR</a>
+            <a routerLink="/whatsapp-link" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">Enlaces de WhatsApp</a>
           </div>
         </div>
 
         <div class="relative group py-2">
-          <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-600 px-3 py-2 rounded-xl text-sm font-medium transition focus:outline-none">
+          <button class="nav-dropdown-btn">
             <span>Herramientas</span>
-            <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
+            <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
-          <div class="absolute left-0 mt-0 w-56 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform scale-95 group-hover:scale-100">
-            <a routerLink="/word-a-html" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Convertidor Word a HTML</a>
-            <a routerLink="/counter-text" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Contador de Caracteres</a>
-            <a routerLink="/password-gen" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">Generador de Contraseñas</a>
+          <div class="nav-dropdown-container align-right md:left-0">
+            <a routerLink="/word-a-html" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">Convertidor Word a HTML</a>
+            <a routerLink="/counter-text" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">Contador de Caracteres</a>
+            <a routerLink="/password-gen" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">Generador de Contraseñas</a>
             <hr class="border-gray-100 my-1">
-            <a routerLink="/conversor-unidades" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition text-left">📏 Conversor de Unidades</a>
+            <a routerLink="/conversor-unidades" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">📏 Conversor de Unidades</a>
           </div>
         </div>
 
         <div class="relative group py-2">
-          <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-600 px-3 py-2 rounded-xl text-sm font-medium transition focus:outline-none">
+          <button class="nav-dropdown-btn">
             <span>Devs</span>
-            <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
+            <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
-          <div class="absolute right-0 mt-0 w-52 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform scale-95 group-hover:scale-100">
-            <a routerLink="/json-formatter" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition text-left">📦 Formateador JSON</a>
-            <a routerLink="/code-minimizer" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition text-left">⚡ Minificador CSS/JS</a>
-            <a routerLink="/color-extractor" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition text-left">🎨 Extractor de Colores</a>
+          <div class="nav-dropdown-container align-right">
+            <a routerLink="/json-formatter" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">📦 Formateador JSON</a>
+            <a routerLink="/code-minimizer" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">⚡ Minificador CSS/JS</a>
+            <a routerLink="/color-extractor" routerLinkActive="bg-blue-50 text-blue-600 font-semibold" class="dropdown-link">🎨 Extractor de Colores</a>
           </div>
         </div>
 
@@ -102,37 +87,66 @@
   </div>
 
   @if (menuAbierto) {
-    <div class="md:hidden bg-gray-50 border-t border-gray-100 px-4 pt-2 pb-6 space-y-3 shadow-inner">
+    <div class="mobile-menu-container">
       
-      <a routerLink="/" (click)="cerrarMenu()" class="block px-3 py-2 text-base font-semibold text-gray-700 hover:bg-white hover:text-blue-600 rounded-xl transition">Inicio</a>
-      
+      <a routerLink="/" (click)="cerrarMenu()" class="mobile-home-link">Inicio</a>
+      <hr class="border-gray-200/60 my-1">
+
       <div class="space-y-1">
-        <span class="block px-3 text-xs font-bold text-gray-400 uppercase tracking-wider mt-2">Finanzas</span>
-        <a routerLink="/igv" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">Calculadora de IGV</a>
-        <a routerLink="/honorarios" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">Recibo por Honorarios</a>
-        <a routerLink="/conversor-monedas" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">💵 Conversor de Monedas</a>
-        <a routerLink="/loan-calculator" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">📉 Calc. de Préstamos</a>
+        <button (click)="toggleCategoria('finanzas')" class="mobile-accordion-btn">
+          <span class="uppercase tracking-wider">Finanzas</span>
+          <svg class="w-4 h-4 text-gray-400 transition-transform duration-200" [class.rotate-180]="categoriaActiva === 'finanzas'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        @if (categoriaActiva === 'finanzas') {
+          <div class="mobile-submenu-box">
+            <a routerLink="/igv" (click)="cerrarMenu()" class="mobile-submenu-link">Calculadora de IGV</a>
+            <a routerLink="/honorarios" (click)="cerrarMenu()" class="mobile-submenu-link">Recibo por Honorarios</a>
+            <a routerLink="/conversor-monedas" (click)="cerrarMenu()" class="mobile-submenu-link">💵 Conversor de Monedas</a>
+            <a routerLink="/loan-calculator" (click)="cerrarMenu()" class="mobile-submenu-link">📉 Calc. de Préstamos</a>
+          </div>
+        }
       </div>
 
       <div class="space-y-1">
-        <span class="block px-3 text-xs font-bold text-gray-400 uppercase tracking-wider mt-2">Marketing</span>
-        <a routerLink="/qr-generator" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">Generador QR</a>
-        <a routerLink="/whatsapp-link" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">Enlaces de WhatsApp</a>
+        <button (click)="toggleCategoria('marketing')" class="mobile-accordion-btn">
+          <span class="uppercase tracking-wider">Marketing</span>
+          <svg class="w-4 h-4 text-gray-400 transition-transform duration-200" [class.rotate-180]="categoriaActiva === 'marketing'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        @if (categoriaActiva === 'marketing') {
+          <div class="mobile-submenu-box">
+            <a routerLink="/qr-generator" (click)="cerrarMenu()" class="mobile-submenu-link">Generador QR</a>
+            <a routerLink="/whatsapp-link" (click)="cerrarMenu()" class="mobile-submenu-link">Enlaces de WhatsApp</a>
+          </div>
+        }
       </div>
 
       <div class="space-y-1">
-        <span class="block px-3 text-xs font-bold text-gray-400 uppercase tracking-wider mt-2">Herramientas</span>
-        <a routerLink="/word-a-html" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">Convertidor Word a HTML</a>
-        <a routerLink="/counter-text" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">Contador de Caracteres</a>
-        <a routerLink="/password-gen" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">Generador de Contraseñas</a>
-        <a routerLink="/conversor-unidades" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">📏 Conversor de Unidades</a>
+        <button (click)="toggleCategoria('herramientas')" class="mobile-accordion-btn">
+          <span class="uppercase tracking-wider">Herramientas</span>
+          <svg class="w-4 h-4 text-gray-400 transition-transform duration-200" [class.rotate-180]="categoriaActiva === 'herramientas'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        @if (categoriaActiva === 'herramientas') {
+          <div class="mobile-submenu-box">
+            <a routerLink="/word-a-html" (click)="cerrarMenu()" class="mobile-submenu-link">Convertidor Word a HTML</a>
+            <a routerLink="/counter-text" (click)="cerrarMenu()" class="mobile-submenu-link">Contador de Caracteres</a>
+            <a routerLink="/password-gen" (click)="cerrarMenu()" class="mobile-submenu-link">Generador de Contraseñas</a>
+            <a routerLink="/conversor-unidades" (click)="cerrarMenu()" class="mobile-submenu-link">📏 Conversor de Unidades</a>
+          </div>
+        }
       </div>
 
       <div class="space-y-1">
-        <span class="block px-3 text-xs font-bold text-gray-400 uppercase tracking-wider mt-2">Desarrollo</span>
-        <a routerLink="/json-formatter" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">📦 Formateador JSON</a>
-        <a routerLink="/code-minimizer" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">⚡ Minificador CSS/JS</a>
-        <a routerLink="/color-extractor" (click)="cerrarMenu()" class="block px-6 py-1.5 text-sm text-gray-600 hover:text-blue-600 transition">🎨 Extractor de Colores</a>
+        <button (click)="toggleCategoria('devs')" class="mobile-accordion-btn">
+          <span class="uppercase tracking-wider">Desarrollo</span>
+          <svg class="w-4 h-4 text-gray-400 transition-transform duration-200" [class.rotate-180]="categoriaActiva === 'devs'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        @if (categoriaActiva === 'devs') {
+          <div class="mobile-submenu-box">
+            <a routerLink="/json-formatter" (click)="cerrarMenu()" class="mobile-submenu-link">📦 Formateador JSON</a>
+            <a routerLink="/code-minimizer" (click)="cerrarMenu()" class="mobile-submenu-link">⚡ Minificador CSS/JS</a>
+            <a routerLink="/color-extractor" (click)="cerrarMenu()" class="mobile-submenu-link">🎨 Extractor de Colores</a>
+          </div>
+        }
       </div>
 
     </div>
