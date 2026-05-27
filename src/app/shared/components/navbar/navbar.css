@@ -1,45 +1,65 @@
-/* --- ESTILOS GENERALES Y ESCRITORIO --- */
-
-.nav-link-desktop {
-  @apply text-gray-600 hover:text-blue-600 px-3 py-2 rounded-xl text-sm font-medium transition;
+.navbar-container {
+  @apply bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-slate-200/60 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] font-sans transition-all duration-300;
 }
-
-.nav-dropdown-btn {
-  @apply flex items-center space-x-1 text-gray-600 hover:text-blue-600 px-3 py-2 rounded-xl text-sm font-medium transition focus:outline-none;
+.navbar-wrapper {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
-
-.nav-dropdown-container {
-  @apply absolute left-0 mt-0 w-52 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform scale-95 group-hover:scale-100;
+.navbar-flex {
+  @apply flex justify-between h-16;
 }
-
-/* Para el submenú de Herramientas y Devs que se alinean a la derecha */
-.nav-dropdown-container.align-right {
-  @apply right-0 left-auto;
+.logo-section {
+  @apply flex items-center;
 }
-
-.dropdown-link {
-  @apply block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition text-left;
+.logo-link {
+  @apply flex-shrink-0 flex items-center space-x-2;
 }
-
-
-/* --- ESTILOS RESPONSIVOS PARA MÓVILES --- */
-
-.mobile-menu-container {
-  @apply md:hidden bg-gray-50 border-t border-gray-100 px-4 pt-2 pb-6 space-y-2 shadow-inner;
+.logo-img {
+  @apply h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105;
 }
-
-.mobile-home-link {
-  @apply block px-3 py-2.5 text-base font-semibold text-gray-700 hover:bg-white hover:text-blue-600 rounded-xl transition;
+.status-badge {
+  @apply hidden sm:inline-block text-[10px] font-black text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-100 uppercase tracking-widest shadow-sm;
 }
-
-.mobile-accordion-btn {
-  @apply w-full flex justify-between items-center px-3 py-2.5 rounded-xl text-sm font-bold text-gray-700 hover:bg-white transition focus:outline-none;
+.desktop-menu {
+  @apply hidden md:flex items-center space-x-1 lg:space-x-2;
 }
-
-.mobile-submenu-box {
-  @apply pl-4 space-y-1 bg-white/50 rounded-xl py-1.5 border border-gray-100;
+.nav-btn-home {
+  @apply text-xs font-bold text-slate-600 px-4 py-2 rounded-xl transition hover:bg-slate-50 hover:text-slate-900 border border-transparent;
 }
+.active-link {
+  @apply text-indigo-600 bg-indigo-50/80 font-bold border-indigo-100 !important;
+}
+.dropdown {
+  @apply relative py-2;
+}
+.dropdown-trigger {
+  @apply flex items-center space-x-1 text-xs font-bold text-slate-600 px-3 py-2 rounded-xl transition duration-200;
+}
+.hover-finanzas:hover, .group:hover .hover-finanzas { @apply bg-blue-50 text-blue-600; }
+.hover-marketing:hover, .group:hover .hover-marketing { @apply bg-emerald-50 text-emerald-600; }
+.hover-herramientas:hover, .group:hover .hover-herramientas { @apply bg-purple-50 text-purple-600; }
+.hover-devs:hover, .group:hover .hover-devs { @apply bg-orange-50 text-orange-600; }
 
-.mobile-submenu-link {
-  @apply block px-4 py-2 text-sm text-gray-600 hover:text-blue-600 transition;
+.arrow-icon {
+  @apply w-3.5 h-3.5 text-slate-400 transition-transform duration-200 group-hover:rotate-180;
+}
+.dropdown-menu {
+  @apply absolute left-0 top-full mt-1 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-slate-100 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50;
+}
+.dropdown-menu.align-right {
+  @apply left-auto right-0;
+}
+.sub-link {
+  @apply block text-xs font-semibold text-slate-600 px-3 py-2.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition;
+}
+.active-sub {
+  @apply bg-indigo-50 text-indigo-600 font-bold !important;
+}
+.menu-divider {
+  @apply border-slate-100 my-1.5;
+}
+.mobile-toggle-zone {
+  @apply flex items-center md:hidden;
+}
+.mobile-menu-btn {
+  @apply inline-flex items-center justify-center p-2 rounded-xl text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 transition focus:outline-none;
 }

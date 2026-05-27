@@ -1,0 +1,100 @@
+/* Contenedor Principal Adaptable y Estilizado */
+.wa-container {
+  @apply w-full max-w-2xl mx-auto bg-white border border-slate-200/80 p-5 sm:p-8 rounded-[28px] sm:rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all font-sans;
+}
+
+/* Encabezado Principal */
+.wa-header {
+  @apply flex items-start space-x-3 sm:space-x-4 mb-6 sm:mb-8 pb-5 sm:pb-6 border-b border-slate-100;
+}
+.wa-icon-badge {
+  @apply w-11 h-11 sm:w-12 sm:h-12 bg-emerald-50 text-emerald-600 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm;
+}
+.wa-title {
+  @apply text-lg sm:text-xl font-black text-slate-800 tracking-tight;
+}
+.wa-subtitle {
+  @apply text-slate-400 text-[11px] sm:text-xs leading-relaxed mt-0.5 font-medium;
+}
+
+/* Estructura del Formulario */
+.wa-form-grid {
+  @apply space-y-5 mb-6;
+}
+.input-wrapper {
+  @apply block w-full;
+}
+.input-label {
+  @apply block text-slate-500 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-2;
+}
+.input-relative {
+  @apply relative w-full flex items-center;
+}
+
+/* Inputs y Textareas Premium */
+.wa-input {
+  @apply w-full p-3.5 sm:p-4 pr-12 bg-slate-50/50 text-slate-800 border border-slate-200 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-medium transition-all outline-none placeholder:text-slate-400 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10;
+}
+.wa-textarea {
+  @apply w-full p-3.5 sm:p-4 pr-12 bg-slate-50/50 text-slate-800 border border-slate-200 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-medium transition-all outline-none placeholder:text-slate-400 resize-none focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10;
+}
+
+.clear-btn {
+  @apply absolute right-4 text-slate-400 hover:text-slate-600 text-sm font-bold transition p-1 focus:outline-none;
+}
+.input-help {
+  @apply text-slate-400 text-[10px] sm:text-xs mt-1.5 block leading-normal;
+}
+
+/* Área de Respuesta Inteligente */
+.result-zone {
+  @apply bg-slate-50/50 border border-dashed border-slate-200 rounded-xl sm:rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center min-h-[160px] transition-all;
+}
+
+/* Animación del Estado Vacío */
+.empty-state {
+  @apply flex flex-col items-center text-center p-4;
+}
+.empty-wa-box {
+  @apply w-10 sm:w-12 h-10 sm:h-12 bg-emerald-100 rounded-full relative mb-3 opacity-60 flex items-center justify-center;
+}
+.pulse-ring {
+  @apply w-full h-full rounded-full bg-emerald-400/30 absolute top-0 left-0 animate-ping;
+}
+.empty-text {
+  @apply text-slate-400 text-[11px] sm:text-xs font-semibold max-w-sm leading-relaxed;
+}
+
+/* Contenedor Activo */
+.wa-active-wrapper {
+  @apply w-full flex flex-col space-y-3 text-left;
+}
+.result-label {
+  @apply text-emerald-700 text-[11px] sm:text-xs font-bold uppercase tracking-wider block;
+}
+.link-display-box {
+  @apply bg-white p-3.5 sm:p-4 rounded-xl border border-emerald-200 text-[11px] sm:text-xs font-mono text-emerald-800 break-all select-all shadow-inner max-h-24 overflow-y-auto;
+}
+
+/* Botones de Acción de Alto Impacto */
+.action-wrapper {
+  @apply w-full pt-1;
+}
+.btn-wa-primary {
+  @apply w-full bg-emerald-600 text-white font-bold text-xs py-3.5 px-4 rounded-xl shadow-lg shadow-emerald-600/15 hover:bg-emerald-700 hover:shadow-emerald-700/25 transition-all duration-200 flex items-center justify-center cursor-pointer;
+}
+
+/* Estado Mutado (Cuando se hace clic en Copiar) */
+.btn-wa-primary.btn-copied {
+  @apply bg-slate-800 shadow-none hover:bg-slate-800 cursor-default;
+}
+
+/* Sistema de Micro-Animación */
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}

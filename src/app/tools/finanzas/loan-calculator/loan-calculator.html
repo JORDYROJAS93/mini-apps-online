@@ -1,72 +1,211 @@
-<div class="max-w-6xl mx-auto my-10 p-4">
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    
-    <div class="lg:col-span-1 bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-      <h2 class="text-xl font-bold text-gray-800 mb-6">Configura tu Préstamo</h2>
-      
-      <div class="space-y-6">
-        <div>
-          <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Monto del Préstamo</label>
-          <input type="number" [(ngModel)]="monto" (input)="calcular()" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none">
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Tasa de Interés Anual (%)</label>
-          <input type="number" [(ngModel)]="tasaAnual" (input)="calcular()" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none">
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Plazo (Meses)</label>
-          <input type="number" [(ngModel)]="plazo" (input)="calcular()" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none">
-        </div>
-      </div>
+<div class="loan-container animate-fade-in">
+  <!-- Header -->
+  <header class="loan-header">
+    <div class="loan-icon-badge" aria-hidden="true">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5h16.5M4.5 19.5h15M5.25 4.5v15m13.5-15v15M9.75 9h4.5m-4.5 3h4.5m-4.5 3h4.5"
+        />
+      </svg>
     </div>
-
-    <div class="lg:col-span-2 space-y-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bg-blue-600 p-6 rounded-3xl text-white shadow-lg shadow-blue-200">
-          <span class="text-xs opacity-80 uppercase font-bold">Cuota Mensual</span>
-          <div class="text-3xl font-black mt-1">{{ cuotaMensual | number:'1.2-2' }}</div>
-        </div>
-        <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
-          <span class="text-xs text-gray-400 uppercase font-bold">Total Intereses</span>
-          <div class="text-3xl font-black text-gray-800 mt-1">{{ totalInteres | number:'1.2-2' }}</div>
-        </div>
-        <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
-          <span class="text-xs text-gray-400 uppercase font-bold">Pago Total</span>
-          <div class="text-3xl font-black text-gray-800 mt-1">{{ totalPago | number:'1.2-2' }}</div>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
-        <div class="p-6 border-b border-gray-50 flex justify-between items-center">
-          <h3 class="font-bold text-gray-800">Cronograma de Pagos</h3>
-          <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-bold uppercase">Sistema Francés</span>
-        </div>
-        <div class="overflow-x-auto max-h-96">
-          <table class="w-full text-left">
-            <thead class="bg-gray-50 text-gray-400 text-[10px] uppercase font-bold">
-              <tr>
-                <th class="px-6 py-4">Mes</th>
-                <th class="px-6 py-4">Cuota</th>
-                <th class="px-6 py-4">Capital</th>
-                <th class="px-6 py-4">Interés</th>
-                <th class="px-6 py-4">Saldo Final</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-50">
-              <tr *ngFor="let item of cronograma" class="hover:bg-blue-50/30 transition-colors">
-                <td class="px-6 py-4 font-bold text-gray-600">{{ item.mes }}</td>
-                <td class="px-6 py-4 text-gray-600">{{ item.cuota | number:'1.2-2' }}</td>
-                <td class="px-6 py-4 text-green-600">{{ item.capital | number:'1.2-2' }}</td>
-                <td class="px-6 py-4 text-red-400">{{ item.interes | number:'1.2-2' }}</td>
-                <td class="px-6 py-4 font-bold text-gray-800">{{ item.saldo | number:'1.2-2' }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div>
+      <h2 class="loan-title">Calculadora de Préstamos</h2>
+      <p class="loan-subtitle">Simula cuotas con el método de amortización francés.</p>
     </div>
+  </header>
 
+  <div class="loan-grid">
+    <!-- Panel Izquierdo: Configuración -->
+    <aside class="panel-config">
+      <h3 class="panel-section-title">Parámetros del Crédito</h3>
+
+      <div class="space-y-5">
+        <!-- === MONTO DEL PRÉSTAMO === -->
+        <div class="input-wrapper">
+          <label for="monto" class="input-label">Monto del Préstamo</label>
+          <div class="input-relative">
+            <span class="input-prefix">S/</span>
+            <input
+              id="monto"
+              type="text"
+              inputmode="decimal"
+              [ngModel]="montoFormateado"
+              (input)="onMontoInput($event)"
+              (blur)="onMontoBlur()"
+              placeholder="5,000.00"
+              class="loan-input"
+              aria-label="Monto del préstamo en soles"
+            />
+          </div>
+          <small class="input-help">Ej: 5000 o 12,500.50</small>
+        </div>
+
+        <!-- TASA DE INTERÉS (con botones +/-) -->
+        <div class="input-wrapper">
+          <label class="input-label">TASA DE INTERÉS ANUAL (%)</label>
+          <div class="input-with-stepper">
+            <button type="button" class="stepper-btn" (click)="ajustarTasa(-0.5)">−</button>
+            <div class="input-relative flex-1">
+              <input
+                type="number"
+                [(ngModel)]="tasaAnual"
+                (input)="calcular()"
+                class="loan-input text-center"
+                min="0.01"
+                max="100"
+                step="0.01"
+              />
+            </div>
+            <button type="button" class="stepper-btn" (click)="ajustarTasa(0.5)">+</button>
+          </div>
+        </div>
+
+        <!-- PLAZO (con botones +/-) -->
+        <div class="input-wrapper">
+          <label class="input-label">PLAZO (MESES)</label>
+          <div class="input-with-stepper">
+            <button type="button" class="stepper-btn" (click)="ajustarPlazo(-1)">−</button>
+            <div class="input-relative flex-1">
+              <input
+                type="number"
+                [(ngModel)]="plazo"
+                (input)="calcular()"
+                class="loan-input text-center"
+                min="1"
+                max="360"
+              />
+            </div>
+            <button type="button" class="stepper-btn" (click)="ajustarPlazo(1)">+</button>
+          </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="flex gap-3 pt-2">
+          <button (click)="resetearFormulario()" class="btn-secondary flex-1" type="button">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+              />
+            </svg>
+            Limpiar
+          </button>
+          <button
+            (click)="exportarCSV()"
+            class="btn-primary flex-1"
+            type="button"
+            [disabled]="cronograma.length === 0"
+          >
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+            Exportar
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Panel Derecho: Resultados -->
+    <main class="panel-results">
+      <!-- KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi-card premium" role="status" aria-live="polite">
+          <span class="kpi-label">Cuota Mensual</span>
+          <div class="kpi-value">S/ {{ cuotaMensual | number: '1.2-2' }}</div>
+          <div class="kpi-subtitle" *ngIf="cronograma.length > 0">{{ plazo }} cuotas fijas</div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label text-slate-400">Total Intereses</span>
+          <div class="kpi-value text-rose-500 font-bold">
+            S/ {{ totalInteres | number: '1.2-2' }}
+          </div>
+          <div class="kpi-subtitle">{{ calcularPorcentajeInteres() }}% del monto</div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label text-slate-400">Pago Total</span>
+          <div class="kpi-value text-slate-800">S/ {{ totalPago | number: '1.2-2' }}</div>
+          <div class="kpi-subtitle">Capital + Intereses</div>
+        </div>
+      </div>
+
+      <!-- Gráfico de Distribución -->
+      <div class="chart-container" *ngIf="cronograma.length > 0">
+        <h4 class="chart-title">Distribución: Capital vs Intereses</h4>
+        <div class="chart-bar">
+          <div
+            class="chart-segment capital"
+            [style.width.%]="porcentajeCapital()"
+            title="Capital: S/ {{ totalCapital | number: '1.2-2' }}"
+          ></div>
+          <div
+            class="chart-segment interest"
+            [style.width.%]="porcentajeInteres()"
+            title="Intereses: S/ {{ totalInteres | number: '1.2-2' }}"
+          ></div>
+        </div>
+        <div class="chart-legend">
+          <span class="legend-item"><span class="legend-dot capital"></span>Capital</span>
+          <span class="legend-item"><span class="legend-dot interest"></span>Intereses</span>
+        </div>
+      </div>
+
+      <!-- Tabla de Amortización -->
+      <div class="table-container">
+        <div class="table-header">
+          <h4 class="table-title">Cronograma de Pagos</h4>
+          <span class="badge-french">Sistema Francés</span>
+        </div>
+
+        @if (cronograma.length > 0) {
+          <div class="table-responsive-scroll" tabindex="0">
+            <table class="loan-table">
+              <thead>
+                <tr>
+                  <th scope="col">Mes</th>
+                  <th scope="col">Cuota</th>
+                  <th scope="col">Capital</th>
+                  <th scope="col">Interés</th>
+                  <th scope="col">Saldo</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of cronograma; track item.mes) {
+                  <tr class="table-row">
+                    <td class="font-semibold">{{ item.mes }}</td>
+                    <td class="text-slate-700">{{ item.cuota | number: '1.2-2' }}</td>
+                    <td class="text-emerald-600 font-medium">
+                      {{ item.capital | number: '1.2-2' }}
+                    </td>
+                    <td class="text-rose-500">{{ item.interes | number: '1.2-2' }}</td>
+                    <td class="font-bold text-slate-900">{{ item.saldo | number: '1.2-2' }}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        } @else {
+          <div class="table-empty-state">
+            <svg class="empty-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              />
+            </svg>
+            <p>Ingresa los parámetros para ver el cronograma de pagos.</p>
+          </div>
+        }
+      </div>
+    </main>
   </div>
 </div>

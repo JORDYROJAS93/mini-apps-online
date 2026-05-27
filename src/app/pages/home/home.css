@@ -1,89 +1,128 @@
-/* --- FONDO GENERAL DE LA PÁGINA (Efecto de luces suaves) --- */
+.home-container {
+  @apply w-full block;
+}
+/* Hero Area */
+.hero-section {
+  @apply text-center max-w-3xl mx-auto mb-20;
+}
 .hero-title {
-  @apply text-4xl md:text-5xl font-black text-gray-900 mb-3 tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600;
+  @apply text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-4;
 }
-
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-blue-600 to-emerald-500;
+}
 .hero-subtitle {
-  @apply text-base md:text-lg text-gray-500 max-w-xl mx-auto font-medium;
+  @apply text-slate-500 text-sm sm:text-base font-medium max-w-xl mx-auto leading-relaxed;
 }
 
-/* --- TARJETAS POPULARES: BASE --- */
-.app-card {
-  @apply cursor-pointer bg-white/80 backdrop-blur-md p-6 rounded-3xl border border-gray-200/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[220px];
+/* Section Header */
+.section-block {
+  @apply mb-20;
+}
+.section-header {
+  @apply flex items-center space-x-3 mb-10;
+}
+.decorative-pill {
+  @apply w-2.5 h-7 rounded-full shadow-sm;
+}
+.line-blue { @apply bg-gradient-to-b from-indigo-500 to-blue-600; }
+
+.section-title {
+  @apply text-xl sm:text-2xl font-black text-slate-800 tracking-tight;
 }
 
-/* --- VARIACIONES DE COLOR EXCLUSIVAS POR TARJETA (HOVER GLOW) --- */
-
-/* Tarjetas Azules (Finanzas) */
-.card-blue-glow {
-  @apply hover:border-blue-400/70 hover:shadow-[0_20px_30px_-10px_rgba(59,130,246,0.25)] hover:-translate-y-1.5;
+/* Grid y Tarjetas */
+.cards-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8;
 }
-.card-blue-glow::before {
-  content: '';
-  @apply absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500;
+.tool-card {
+  @apply relative bg-white border border-slate-200/80 p-7 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] transition-all duration-300 flex flex-col justify-between min-h-[255px] transform hover:-translate-y-2;
 }
 
-/* Tarjetas Verdes (Marketing / WhatsApp) */
-.card-green-glow {
-  @apply hover:border-emerald-400/70 hover:shadow-[0_20px_30px_-10px_rgba(16,185,129,0.25)] hover:-translate-y-1.5;
-}
-.card-green-glow::before {
-  content: '';
-  @apply absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-emerald-500 to-teal-500;
-}
+/* Modificadores de Hovers en las Tarjetas Principales */
+.border-hover-blue:hover { @apply border-blue-400; }
+.shadow-hover-blue:hover { @apply shadow-[0_20px_35px_-10px_rgba(59,130,246,0.18)]; }
 
-/* Tarjetas Púrpuras (Utilidades / Word) */
-.card-purple-glow {
-  @apply hover:border-purple-400/70 hover:shadow-[0_20px_30px_-10px_rgba(139,92,246,0.25)] hover:-translate-y-1.5;
-}
-.card-purple-glow::before {
-  content: '';
-  @apply absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-purple-500 to-pink-500;
-}
+.border-hover-emerald:hover { @apply border-emerald-400; }
+.shadow-hover-emerald:hover { @apply shadow-[0_20px_35px_-10px_rgba(16,185,129,0.18)]; }
 
-/* --- COMPONENTES INTERNOS DE LAS TARJETAS --- */
+.border-hover-indigo:hover { @apply border-indigo-400; }
+.shadow-hover-indigo:hover { @apply shadow-[0_20px_35px_-10px_rgba(99,102,241,0.18)]; }
+
+.border-hover-purple:hover { @apply border-purple-400; }
+.shadow-hover-purple:hover { @apply shadow-[0_20px_35px_-10px_rgba(168,85,247,0.18)]; }
+
+/* Estructura Interna de la tarjeta */
 .icon-box {
-  @apply w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-all duration-300 transform group-hover:scale-110 shadow-sm;
+  @apply w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 shadow-sm transform group-hover:rotate-6;
 }
+.icon-blue { @apply bg-blue-50 text-blue-600; }
+.icon-emerald { @apply bg-emerald-50 text-emerald-600; }
+.icon-indigo { @apply bg-indigo-50 text-indigo-600; }
+.icon-purple { @apply bg-purple-50 text-purple-600; }
 
-.icon-blue { @apply bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-blue-200; }
-.icon-green { @apply bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-200; }
-.icon-purple { @apply bg-purple-50 text-purple-600 group-hover:bg-purple-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-purple-200; }
+.tool-card:hover .icon-box { @apply text-white; }
+.tool-card:hover .icon-blue { @apply bg-blue-600; }
+.tool-card:hover .icon-emerald { @apply bg-emerald-600; }
+.tool-card:hover .icon-indigo { @apply bg-indigo-600; }
+.tool-card:hover .icon-purple { @apply bg-purple-600; }
 
-.card-heading {
-  @apply text-lg font-bold text-gray-800 mb-1.5 transition-colors duration-200;
+.card-title {
+  @apply text-lg font-bold text-slate-800 transition mb-2;
 }
-/* Al hacer hover el título se tiñe de su color correspondiente */
-.card-blue-glow:hover .card-heading { @apply text-blue-600; }
-.card-green-glow:hover .card-heading { @apply text-emerald-600; }
-.card-purple-glow:hover .card-heading { @apply text-purple-600; }
+.tool-card:hover .card-title { @apply text-slate-900; }
 
 .card-desc {
-  @apply text-gray-500 text-xs leading-relaxed mb-4;
+  @apply text-slate-400 text-xs leading-relaxed font-medium;
+}
+.card-footer {
+  @apply text-xs font-bold transition-all flex items-center mt-5 opacity-80;
+}
+.tool-card:hover .card-footer { @apply opacity-100; }
+.footer-blue { @apply text-blue-600; }
+.footer-emerald { @apply text-emerald-600; }
+.footer-indigo { @apply text-indigo-600; }
+.footer-purple { @apply text-purple-600; }
+
+.arrow {
+  @apply ml-1.5 transition-transform duration-200;
+}
+.tool-card:hover .arrow { @apply translate-x-1; }
+
+/* Panel de abajo (Vidrio) */
+.glass-panel {
+  @apply bg-white/60 backdrop-blur-md border border-slate-200/50 rounded-[32px] p-6 sm:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.01)];
+}
+.panel-title {
+  @apply text-lg font-black text-slate-800;
+}
+.panel-subtitle {
+  @apply text-xs font-medium text-slate-400 mt-1;
+}
+.compact-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-8;
+}
+.compact-item {
+  @apply flex items-center space-x-4 bg-white/90 p-4 rounded-2xl border border-slate-100 shadow-sm transition duration-200 transform hover:-translate-y-0.5;
+}
+.mini-icon {
+  @apply w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold transition duration-200;
+}
+.compact-text {
+  @apply text-xs font-bold text-slate-600 transition;
 }
 
-.arrow-action {
-  @apply text-xs font-bold opacity-0 group-hover:opacity-100 transform translate-x-[-5px] group-hover:translate-x-0 transition-all duration-300;
-}
-.card-blue-glow .arrow-action { @apply text-blue-600; }
-.card-green-glow .arrow-action { @apply text-emerald-600; }
-.card-purple-glow .arrow-action { @apply text-purple-600; }
+/* Hovers de la lista compacta */
+.hover-blue:hover { @apply border-blue-300 shadow-[0_10px_20px_-5px_rgba(59,130,246,0.1)]; }
+.hover-blue:hover .mini-icon { @apply bg-blue-600 text-white; }
 
+.hover-emerald:hover { @apply border-emerald-300 shadow-[0_10px_20px_-5px_rgba(16,185,129,0.1)]; }
+.hover-emerald:hover .mini-icon { @apply bg-emerald-600 text-white; }
 
-/* --- ENLACES RÁPIDOS INFERIORES CON DEGRADADOS LEVES --- */
-.quick-link {
-  @apply cursor-pointer flex items-center space-x-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.02)] transition-all duration-200 text-left;
-}
+.hover-purple:hover { @apply border-purple-300 shadow-[0_10px_20px_-5px_rgba(139,92,246,0.1)]; }
+.hover-purple:hover .mini-icon { @apply bg-purple-600 text-white; }
 
-/* Hovers independientes con sutiles toques de color de fondo para la grilla de abajo */
-.ql-blue { @apply hover:border-blue-200 hover:bg-blue-50/40 hover:shadow-md hover:-translate-y-0.5; }
-.ql-green { @apply hover:border-emerald-200 hover:bg-emerald-50/40 hover:shadow-md hover:-translate-y-0.5; }
-.ql-purple { @apply hover:border-purple-200 hover:bg-purple-50/40 hover:shadow-md hover:-translate-y-0.5; }
-.ql-orange { @apply hover:border-orange-200 hover:bg-orange-50/40 hover:shadow-md hover:-translate-y-0.5; }
+.hover-orange:hover { @apply border-orange-300 shadow-[0_10px_20px_-5px_rgba(249,115,22,0.1)]; }
+.hover-orange:hover .mini-icon { @apply bg-orange-600 text-white; }
 
-.quick-link-text {
-  @apply text-xs font-bold text-gray-600 tracking-tight;
-}
-.quick-link:hover .quick-link-text {
-  @apply text-gray-900;
-}
+.compact-item:hover .compact-text { @apply text-slate-900; }

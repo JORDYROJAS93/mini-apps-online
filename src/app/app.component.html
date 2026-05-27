@@ -1,11 +1,12 @@
-<div class="min-h-screen flex flex-col bg-gradient-to-tr from-slate-50 via-white to-blue-50/60 relative">
+<div class="app-global-wrapper">
   
-  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-400/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
-  <div class="absolute bottom-20 left-0 w-[400px] h-[400px] bg-purple-400/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="light-orb orb-top-right"></div>
+  <div class="light-orb orb-center-left"></div>
+  <div class="light-orb orb-bottom-right"></div>
 
   <app-navbar></app-navbar>
 
-  <main class="flex-grow container mx-auto px-4 sm:px-6 py-6 md:py-10">
+  <main class="main-content-area">
     <router-outlet></router-outlet>
   </main>
 

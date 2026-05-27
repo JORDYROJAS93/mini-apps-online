@@ -1,121 +1,131 @@
-<div class="min-h-screen bg-gradient-to-b from-gray-50 via-white to-blue-50/30 py-12 md:py-16 font-sans">
-  <div class="max-w-7xl mx-auto px-4">
-    
-    <div class="text-center mb-16">
-      <h1 class="hero-title">
-        MINI APPS <span class="relative inline-block">ONLINE</span>
-      </h1>
-      <p class="hero-subtitle">🎯 Herramientas inteligentes, rápidas y con interfaz premium para tu día a día.</p>
+<div class="home-container">
+  
+  <header class="hero-section">
+    <h1 class="hero-title">
+      MINI APPS <span class="gradient-text">ONLINE</span>
+    </h1>
+    <p class="hero-subtitle">
+      🎯 Herramientas web inteligentes libres de configuraciones. Rápidas, seguras y optimizadas para tu productividad diaria.
+    </p>
+  </header>
+
+  <section class="section-block">
+    <div class="section-header">
+      <span class="decorative-pill line-blue"></span>
+      <h2 class="section-title">Herramientas Populares</h2>
     </div>
 
-    <section class="mb-16">
-      <div class="flex items-center space-x-2 mb-8">
-        <span class="w-2 h-6 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full"></span>
-        <h2 class="text-xl font-black text-gray-800 tracking-tight">Herramientas Populares</h2>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <a [routerLink]="['/igv']" class="group app-card card-blue-glow">
-          <div>
-            <div class="icon-box icon-blue"><span class="text-xl font-black">%</span></div>
-            <h3 class="card-heading">Calculadora de IGV</h3>
-            <p class="card-desc">Calcula y desglosa el impuesto de forma instantánea sin errores.</p>
+    <div class="cards-grid">
+      
+      <a [routerLink]="['/igv']" class="tool-card border-hover-blue shadow-hover-blue">
+        <div class="card-body">
+          <div class="icon-box icon-blue">
+            <span class="text-2xl font-black">%</span>
           </div>
-          <div class="arrow-action">Abrir herramienta <span class="ml-1">→</span></div>
-        </a>
+          <h3 class="card-title">Calculadora de IGV</h3>
+          <p class="card-desc">Calcula, desglosa y extrae el impuesto general a las ventas de manera exacta en segundos.</p>
+        </div>
+        <div class="card-footer footer-blue">
+          Comenzar <span class="arrow">→</span>
+        </div>
+      </a>
 
-        <a [routerLink]="['/whatsapp-link']" class="group app-card card-green-glow">
-          <div>
-            <div class="icon-box icon-green">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.886.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-            </div>
-            <h3 class="card-heading">Links de WhatsApp</h3>
-            <p class="card-desc">Crea enlaces con mensajes listos y personalizados para campañas.</p>
+      <a [routerLink]="['/whatsapp-link']" class="tool-card border-hover-emerald shadow-hover-emerald">
+        <div class="card-body">
+          <div class="icon-box icon-emerald">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.886.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
           </div>
-          <div class="arrow-action">Abrir herramienta <span class="ml-1">→</span></div>
-        </a>
+          <h3 class="card-title">Links de WhatsApp</h3>
+          <p class="card-desc">Genera enlaces rápidos con mensajes predefinidos listos para tus chats y campañas.</p>
+        </div>
+        <div class="card-footer footer-emerald">
+          Comenzar <span class="arrow">→</span>
+        </div>
+      </a>
 
-        <a [routerLink]="['/honorarios']" class="group app-card card-blue-glow">
-          <div>
-            <div class="icon-box icon-blue">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            </div>
-            <h3 class="card-heading">Recibo por Honorarios</h3>
-            <p class="card-desc">Deducciones rápidas del 8% de cuarta categoría e ingresos netos.</p>
+      <a [routerLink]="['/honorarios']" class="tool-card border-hover-indigo shadow-hover-indigo">
+        <div class="card-body">
+          <div class="icon-box icon-indigo">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           </div>
-          <div class="arrow-action">Abrir herramienta <span class="ml-1">→</span></div>
-        </a>
+          <h3 class="card-title">Recibo por Honorarios</h3>
+          <p class="card-desc">Calcula las retenciones del 8% de cuarta categoría, montos netos y brutos de inmediato.</p>
+        </div>
+        <div class="card-footer footer-indigo">
+          Comenzar <span class="arrow">→</span>
+        </div>
+      </a>
 
-        <a [routerLink]="['/word-a-html']" class="group app-card card-purple-glow">
-          <div>
-            <div class="icon-box icon-purple">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-            </div>
-            <h3 class="card-heading">Word a HTML</h3>
-            <p class="card-desc">Limpia y transforma tus textos ricos a marcado web semántico.</p>
+      <a [routerLink]="['/word-a-html']" class="tool-card border-hover-purple shadow-hover-purple">
+        <div class="card-body">
+          <div class="icon-box icon-purple">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
           </div>
-          <div class="arrow-action">Abrir herramienta <span class="ml-1">→</span></div>
-        </a>
+          <h3 class="card-title">Word a HTML</h3>
+          <p class="card-desc">Convierte tus documentos ricos y notas de texto a un marcado de código HTML limpio y usable.</p>
+        </div>
+        <div class="card-footer footer-purple">
+          Comenzar <span class="arrow">→</span>
+        </div>
+      </a>
 
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="bg-white/40 backdrop-blur-md border border-gray-200/50 rounded-3xl p-6 md:p-8 shadow-sm">
-      <div class="mb-6">
-        <h2 class="text-lg font-extrabold text-gray-800">Otras herramientas útiles</h2>
-        <p class="text-xs text-gray-400">Acceso directo y optimizado al resto de nuestro ecosistema digital.</p>
-      </div>
+  <section class="glass-panel">
+    <div class="panel-header">
+      <h3 class="panel-title">Otras herramientas útiles</h3>
+      <p class="panel-subtitle">Acceso inmediato sin pérdida de tiempo a utilidades especializadas.</p>
+    </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        
-        <a [routerLink]="['/conversor-monedas']" class="quick-link ql-blue">
-          <span class="text-lg">💵</span>
-          <span class="quick-link-text">Conversor Monedas</span>
-        </a>
+    <div class="compact-grid">
+      
+      <a [routerLink]="['/conversor-monedas']" class="compact-item hover-blue">
+        <div class="mini-icon text-blue-600 bg-blue-50">💵</div>
+        <span class="compact-text">Conversor Monedas</span>
+      </a>
 
-        <a [routerLink]="['/loan-calculator']" class="quick-link ql-blue">
-          <span class="text-lg">📉</span>
-          <span class="quick-link-text">Calc. Préstamos</span>
-        </a>
+      <a [routerLink]="['/loan-calculator']" class="compact-item hover-blue">
+        <div class="mini-icon text-blue-600 bg-blue-50">📉</div>
+        <span class="compact-text">Calculadora de Préstamos</span>
+      </a>
 
-        <a [routerLink]="['/qr-generator']" class="quick-link ql-green">
-          <span class="text-lg">🔲</span>
-          <span class="quick-link-text">Generador QR</span>
-        </a>
+      <a [routerLink]="['/qr-generator']" class="compact-item hover-emerald">
+        <div class="mini-icon text-emerald-600 bg-emerald-50">🔲</div>
+        <span class="compact-text">Generador QR</span>
+      </a>
 
-        <a [routerLink]="['/counter-text']" class="quick-link ql-purple">
-          <span class="text-lg">📝</span>
-          <span class="quick-link-text">Contador de Texto</span>
-        </a>
+      <a [routerLink]="['/counter-text']" class="compact-item hover-purple">
+        <div class="mini-icon text-purple-600 bg-purple-50">📝</div>
+        <span class="compact-text">Contador de Texto</span>
+      </a>
 
-        <a [routerLink]="['/password-gen']" class="quick-link ql-purple">
-          <span class="text-lg">🔑</span>
-          <span class="quick-link-text">Generador Claves</span>
-        </a>
+      <a [routerLink]="['/password-gen']" class="compact-item hover-purple">
+        <div class="mini-icon text-purple-600 bg-purple-50">🔑</div>
+        <span class="compact-text">Generador Claves</span>
+      </a>
 
-        <a [routerLink]="['/conversor-unidades']" class="quick-link ql-purple">
-          <span class="text-lg">📏</span>
-          <span class="quick-link-text">Calc. Unidades</span>
-        </a>
+      <a [routerLink]="['/conversor-unidades']" class="compact-item hover-purple">
+        <div class="mini-icon text-purple-600 bg-purple-50">📏</div>
+        <span class="compact-text">Cálculo de Unidades</span>
+      </a>
 
-        <a [routerLink]="['/json-formatter']" class="quick-link ql-orange">
-          <span class="text-base font-mono font-bold text-orange-500">&#123;&#125;</span>
-          <span class="quick-link-text">Formateador JSON</span>
-        </a>
+      <a [routerLink]="['/json-formatter']" class="compact-item hover-orange">
+        <div class="mini-icon text-orange-600 bg-orange-50 font-mono text-sm">&#123;&#125;</div>
+        <span class="compact-text">Formateador JSON</span>
+      </a>
 
-        <a [routerLink]="['/code-minimizer']" class="quick-link ql-orange">
-          <span class="text-lg">⚡</span>
-          <span class="quick-link-text">Minificador JS/CSS</span>
-        </a>
+      <a [routerLink]="['/code-minimizer']" class="compact-item hover-orange">
+        <div class="mini-icon text-orange-600 bg-orange-50">⚡</div>
+        <span class="compact-text">Minificador JS/CSS</span>
+      </a>
 
-        <a [routerLink]="['/color-extractor']" class="quick-link ql-orange">
-          <span class="text-lg">🎨</span>
-          <span class="quick-link-text">Paleta de Colores</span>
-        </a>
+      <a [routerLink]="['/color-extractor']" class="compact-item hover-orange">
+        <div class="mini-icon text-orange-600 bg-orange-50">🎨</div>
+        <span class="compact-text">Paleta de Colores</span>
+      </a>
 
-      </div>
-    </section>
+    </div>
+  </section>
 
-  </div>
 </div>

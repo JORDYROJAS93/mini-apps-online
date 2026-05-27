@@ -1,12 +1,60 @@
-<div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-  <h2 class="text-2xl font-bold mb-6 text-gray-800">Generador de QR</h2>
-  <input type="text" [(ngModel)]="texto" (input)="generarQR()" placeholder="Escribe un enlace o texto..."
-    class="w-full p-3 border border-gray-300 rounded-xl mb-4 focus:ring-2 focus:ring-blue-500 outline-none">
+<div class="qr-container animate-fade-in">
   
-  <div *ngIf="qrImage" class="flex flex-col items-center animate-fade-in">
-    <img [src]="qrImage" class="border-4 border-gray-50 rounded-lg shadow-sm">
-    <button (click)='descargarQR()' class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition">
-      Descargar PNG
-    </button>
+  <header class="qr-header">
+    <div class="qr-icon-badge">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c0 .621.504 1.125 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5zM13.5 14.625c0-.621.504-1.125 1.125-1.125h1.5a1.125 1.125 0 011.125 1.125v1.5a1.125 1.125 0 01-1.125 1.125h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5zM17.625 17.625a1.125 1.125 0 011.125-1.125h1.5a1.125 1.125 0 011.125 1.125v1.5a1.125 1.125 0 01-1.125 1.125h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5zM13.5 19.125a1.125 1.125 0 011.125-1.125h1.5a1.125 1.125 0 011.125 1.125v1.5a1.125 1.125 0 01-1.125 1.125h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5z" />
+      </svg>
+    </div>
+    <div>
+      <h2 class="qr-title">Generador de códigos QR</h2>
+      <p class="qr-subtitle">Convierte cualquier enlace, texto o número en un código QR dinámico listo para imprimir.</p>
+    </div>
+  </header>
+
+  <div class="input-wrapper">
+    <label class="input-label">Enlace o Contenido</label>
+    <div class="input-relative">
+      <input 
+        type="text" 
+        [(ngModel)]="texto" 
+        (input)="generarQR()" 
+        placeholder="Ej: https://misitio.com o un mensaje personalizado..."
+        class="qr-input"
+      />
+      @if (texto) {
+        <button (click)="limpiarTexto()" class="clear-btn" title="Limpiar texto">✕</button>
+      }
+    </div>
   </div>
+  
+  <div class="preview-zone">
+    
+    @if (!qrImage) {
+      <div class="empty-state">
+        <div class="empty-qr-box">
+          <div class="scan-line"></div>
+        </div>
+        <p class="empty-text">Esperando que escribas algo para generar el código...</p>
+      </div>
+    }
+
+    @if (qrImage) {
+      <div class="qr-active-wrapper">
+        <div class="image-frame">
+          <img [src]="qrImage" alt="Código QR Generado" class="qr-image" />
+        </div>
+        
+        <div class="action-grid">
+          <button (click)='descargarQR()' class="btn-primary">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            Descargar PNG
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+
 </div>

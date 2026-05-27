@@ -13,22 +13,48 @@ export class WhatsappLink {
   telefono: string = '';
   mensaje: string = '';
   enlaceGenerado: string = '';
+  copiado: boolean = false; // Estado para manejar el feedback visual del botón
 
   generarLink() {
-    if (this.telefono) {
-      // Limpiamos el número de espacios, guiones o símbolos +
-      const numLimpiado = this.telefono.replace(/\D/g, '');
-      const mensajeCodificado = encodeURIComponent(this.mensaje);
-      this.enlaceGenerado = `https://wa.me/${numLimpiado}?text=${mensajeCodificado}`;
-    } else {
-      this.enlaceGenerado = '';
+    // Quitamos los espacios antes y después
+    const telefonoTrimmed = this.telefono.trim();
+
+    if (telefonoTrimmed) {
+      // Limpiamos de forma estricta cualquier símbolo indebido
+      const numLimpiado = telefonoTrimmed.replace(/\D/g, '');
+      
+      if (numLimpiado) {
+        const mensajeCodificado = encodeURIComponent(this.mensaje);
+        this.enlaceGenerado = `https://wa.me/${numLimpiado}?text=${mensajeCodificado}`;
+        return;
+      }
     }
+    
+    this.enlaceGenerado = '';
+  }
+
+  limpiarCampo(campo: 'telefono' | 'mensaje') {
+    if (campo === 'telefono') {
+      this.telefono = '';
+    } else {
+      this.mensaje = '';
+    }
+    this.generarLink();
   }
 
   copiarEnlace() {
-    if (this.enlaceGenerado) {
-      navigator.clipboard.writeText(this.enlaceGenerado);
-      alert('¡Enlace copiado al portapapeles!');
-    }
+    if (!this.enlaceGenerado || this.copiado) return;
+
+    navigator.clipboard.writeText(this.enlaceGenerado).then(() => {
+      // Activamos el estado de copiado
+      this.copiado = true;
+
+      // Revierte el estado del botón tras 2.5 segundos de forma automática
+      setTimeout(() => {
+        this.copiado = false;
+      }, 2500);
+    }).catch(err => {
+      console.error('Error al copiar el enlace:', err);
+    });
   }
 }
