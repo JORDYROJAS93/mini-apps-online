@@ -63,3 +63,29 @@
 .mobile-menu-btn {
   @apply inline-flex items-center justify-center p-2 rounded-xl text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 transition focus:outline-none;
 }
+
+/* --- ESTILOS ADICIONALES PARA MÓVIL --- */
+.mobile-menu-panel {
+  @apply md:hidden bg-white border-t border-slate-100 shadow-inner max-h-[calc(100vh-4rem)] overflow-y-auto;
+}
+.mobile-menu-wrapper {
+  @apply px-4 pt-2 pb-6 space-y-1;
+}
+.mobile-nav-btn {
+  @apply block text-sm font-bold text-slate-700 px-4 py-3 rounded-xl hover:bg-slate-50 transition;
+}
+.active-mobile-link {
+  @apply text-indigo-600 bg-indigo-50 font-bold !important;
+}
+.mobile-dropdown-trigger {
+  @apply flex items-center justify-between w-full text-sm font-bold text-slate-700 px-4 py-3 rounded-xl hover:bg-slate-50 transition text-left;
+}
+.mobile-arrow {
+  @apply w-4 h-4 text-slate-400 transition-transform duration-200;
+}
+.mobile-sub-menu {
+  @apply pl-6 pr-2 py-1 bg-slate-50/50 rounded-xl mt-1 space-y-1;
+}
+.mobile-sub-link {
+  @apply block text-xs font-semibold text-slate-600 px-4 py-2.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition;
+}

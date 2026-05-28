@@ -77,4 +77,73 @@
 
     </div>
   </div>
+
+  @if (menuAbierto) {
+    <div class="mobile-menu-panel">
+      <div class="mobile-menu-wrapper">
+        
+        <a routerLink="/" (click)="cerrarMenu()" routerLinkActive="active-mobile-link" [routerLinkActiveOptions]="{exact: true}" class="mobile-nav-btn">
+          Inicio
+        </a>
+
+        <div>
+          <button (click)="toggleCategoria('finanzas')" class="mobile-dropdown-trigger" [class.text-blue-600]="categoriaActiva === 'finanzas'">
+            <span>Finanzas</span>
+            <svg class="mobile-arrow" [class.rotate-180]="categoriaActiva === 'finanzas'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          @if (categoriaActiva === 'finanzas') {
+            <div class="mobile-sub-menu">
+              <a routerLink="/igv" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">Calculadora de IGV</a>
+              <a routerLink="/honorarios" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">Recibo por Honorarios</a>
+              <a routerLink="/conversor-monedas" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">💵 Conversor de Monedas</a>
+              <a routerLink="/loan-calculator" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">📉 Calc. de Préstamos</a>
+            </div>
+          }
+        </div>
+
+        <div>
+          <button (click)="toggleCategoria('marketing')" class="mobile-dropdown-trigger" [class.text-emerald-600]="categoriaActiva === 'marketing'">
+            <span>Marketing</span>
+            <svg class="mobile-arrow" [class.rotate-180]="categoriaActiva === 'marketing'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          @if (categoriaActiva === 'marketing') {
+            <div class="mobile-sub-menu">
+              <a routerLink="/qr-generator" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">Generador QR</a>
+              <a routerLink="/whatsapp-link" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">Enlaces de WhatsApp</a>
+            </div>
+          }
+        </div>
+
+        <div>
+          <button (click)="toggleCategoria('herramientas')" class="mobile-dropdown-trigger" [class.text-purple-600]="categoriaActiva === 'herramientas'">
+            <span>Herramientas</span>
+            <svg class="mobile-arrow" [class.rotate-180]="categoriaActiva === 'herramientas'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          @if (categoriaActiva === 'herramientas') {
+            <div class="mobile-sub-menu">
+              <a routerLink="/word-a-html" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">Convertidor Word a HTML</a>
+              <a routerLink="/counter-text" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">Contador de Caracteres</a>
+              <a routerLink="/password-gen" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">Generador de Contraseñas</a>
+              <a routerLink="/conversor-unidades" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">📏 Conversor de Unidades</a>
+            </div>
+          }
+        </div>
+
+        <div>
+          <button (click)="toggleCategoria('devs')" class="mobile-dropdown-trigger" [class.text-orange-600]="categoriaActiva === 'devs'">
+            <span>Devs</span>
+            <svg class="mobile-arrow" [class.rotate-180]="categoriaActiva === 'devs'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          @if (categoriaActiva === 'devs') {
+            <div class="mobile-sub-menu">
+              <a routerLink="/json-formatter" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">📦 Formateador JSON</a>
+              <a routerLink="/code-minimizer" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">⚡ Minificador CSS/JS</a>
+              <a routerLink="/color-extractor" (click)="cerrarMenu()" routerLinkActive="active-sub" class="mobile-sub-link">🎨 Extractor de Colores</a>
+            </div>
+          }
+        </div>
+
+      </div>
+    </div>
+  }
 </nav>
