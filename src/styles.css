@@ -2,3 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Ocultar barra de scroll para Chrome, Safari y Opera */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  /* Ocultar barra de scroll para IE, Edge y Firefox */
+  .scrollbar-none {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}

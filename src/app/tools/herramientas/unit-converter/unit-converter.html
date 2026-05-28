@@ -1,54 +1,56 @@
-<div class="max-w-4xl mx-auto my-10 p-4">
-  <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+<div class="converter-container">
+  <div class="converter-card">
     
-    <div class="flex bg-gray-50 border-b border-gray-100 p-2 gap-2">
+    <div class="category-tabs-wrapper">
       <button 
         *ngFor="let cat of categorias" 
         (click)="categoriaSeleccionada = cat; onCategoriaChange()"
         [ngClass]="{
-          'bg-white text-blue-600 shadow-sm font-bold': categoriaSeleccionada === cat,
-          'text-gray-500 hover:bg-gray-100': categoriaSeleccionada !== cat
+          'tab-active': categoriaSeleccionada === cat,
+          'tab-inactive': categoriaSeleccionada !== cat
         }"
-        class="flex-1 py-3 px-4 rounded-2xl text-sm transition-all duration-200 uppercase tracking-wider font-medium text-center">
+        class="category-tab-btn">
         <i class="mr-2" [ngClass]="{
           'fa-solid fa-ruler': cat === 'Longitud',
-          'fa-solid fa-weight-hanging': cat === 'Peso',
+          'fa-solid fa-weight-hanging': cat === 'Peso / Masa',
           'fa-solid fa-temperature-half': cat === 'Temperatura'
         }"></i>
         {{ cat }}
       </button>
     </div>
 
-    <div class="p-8 space-y-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative">
+    <div class="converter-body">
+      <div class="converter-grid">
         
-        <div class="space-y-3">
-          <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider">Desde</label>
-          <select [(ngModel)]="unidadOrigen" (change)="convertir()" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-gray-700 font-medium">
+        <div class="input-block">
+          <label class="block-label">Desde</label>
+          <select [(ngModel)]="unidadOrigen" (change)="convertir()" class="select-field">
             <option *ngFor="let uni of unidadesPorCategoria[categoriaSeleccionada]" [value]="uni">{{ uni }}</option>
           </select>
-          <input type="number" [(ngModel)]="valorOrigen" (input)="convertir()" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-2xl font-bold text-gray-800 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="0">
+          <input type="number" [(ngModel)]="valorOrigen" (input)="convertir()" class="input-field" placeholder="0">
         </div>
 
-        <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-50 text-blue-600 w-10 h-10 rounded-full border border-blue-100 items-center justify-center shadow-sm z-10">
-          <i class="fa-solid fa-right-left"></i>
-        </div>
+        <div class="divider-icon-zone">
+  <div (click)="intercambiarUnidades()" class="circle-icon cursor-pointer hover:bg-indigo-100 transition-colors duration-150" title="Intercambiar unidades">
+    <i class="fa-solid fa-right-left rotate-90 md:rotate-0"></i>
+  </div>
+</div>
 
-        <div class="space-y-3">
-          <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider">A</label>
-          <select [(ngModel)]="unidadDestino" (change)="convertir()" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-gray-700 font-medium">
+        <div class="input-block">
+          <label class="block-label">A</label>
+          <select [(ngModel)]="unidadDestino" (change)="convertir()" class="select-field">
             <option *ngFor="let uni of unidadesPorCategoria[categoriaSeleccionada]" [value]="uni">{{ uni }}</option>
           </select>
-          <div class="w-full p-4 bg-blue-50/50 border border-blue-100/50 rounded-xl text-2xl font-black text-blue-600 min-h-[64px] flex items-center">
+          <div class="result-display-field">
             {{ valorDestino }}
           </div>
         </div>
 
       </div>
 
-      <div class="bg-gray-50 p-4 rounded-2xl flex items-center gap-3 text-sm text-gray-500">
-        <i class="fa-solid fa-circle-info text-blue-500"></i>
-        <span>Los valores calculados incluyen redondeo automático para garantizar la máxima precisión de pantalla.</span>
+      <div class="info-footer-box">
+        <i class="fa-solid fa-circle-info text-indigo-500 text-base"></i>
+        <span>Los valores calculados incluyen redondeo automático adaptativo para garantizar la máxima precisión en pantalla.</span>
       </div>
     </div>
 

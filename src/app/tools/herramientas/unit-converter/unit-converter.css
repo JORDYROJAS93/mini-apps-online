@@ -1,0 +1,74 @@
+.converter-container {
+  @apply max-w-4xl mx-auto my-10 p-4 sm:p-6;
+}
+
+.converter-card {
+  @apply bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden;
+}
+
+.category-tabs-wrapper {
+  /* Le quitamos el scrollbar-none de aquí */
+  @apply flex bg-gray-50 border-b border-gray-100 p-2 gap-2 overflow-x-auto snap-x;
+}
+
+.category-tab-btn {
+  @apply flex-1 min-w-[140px] py-3.5 px-4 rounded-2xl text-xs sm:text-sm transition-all duration-200 uppercase tracking-wider font-semibold text-center whitespace-nowrap snap-center;
+}
+
+.tab-active {
+  @apply bg-white text-indigo-600 shadow-sm border border-gray-100;
+}
+
+.tab-inactive {
+  @apply text-gray-500 hover:bg-gray-100/70 hover:text-gray-700;
+}
+
+.converter-body {
+  @apply p-6 sm:p-8 space-y-8;
+}
+
+/* Grid responsivo: Se apila en teléfonos y se pone en fila en PCs */
+.converter-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center relative;
+}
+
+.input-block {
+  @apply space-y-3 w-full;
+}
+
+.block-label {
+  @apply block text-xs font-bold text-gray-400 uppercase tracking-wider;
+}
+
+.select-field {
+  @apply w-full p-3.5 bg-gray-50/70 border border-gray-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none text-gray-700 font-medium text-sm transition duration-200;
+}
+
+.input-field {
+  @apply w-full p-4 bg-gray-50/70 border border-gray-200 rounded-xl text-2xl font-bold text-gray-800 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition duration-200;
+}
+
+/* Adaptación del icono intermedio para que rote en móviles correctamente */
+.divider-icon-zone {
+  @apply flex md:absolute left-1/2 top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 justify-center items-center z-10 my-1 md:my-0;
+}
+
+.circle-icon {
+  @apply bg-indigo-50 text-indigo-600 w-10 h-10 rounded-full border border-indigo-100 flex items-center justify-center shadow-sm;
+}
+
+.result-display-field {
+  @apply w-full p-4 bg-indigo-50/40 border border-indigo-100/50 rounded-xl text-2xl font-black text-indigo-600 min-h-[68px] flex items-center tracking-tight overflow-x-auto;
+}
+
+.info-footer-box {
+  @apply bg-gray-50 p-4 rounded-2xl flex items-start sm:items-center gap-3 text-xs sm:text-sm text-gray-500 leading-relaxed;
+}
+/* Ocultar la barra de scroll específicamente en este componente */
+.category-tabs-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.category-tabs-wrapper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
