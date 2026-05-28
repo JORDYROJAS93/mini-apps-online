@@ -1,0 +1,102 @@
+.support-page-container {
+  @apply min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center;
+}
+
+/* Contenedor Grid: Se adapta a 1 columna en móvil y 2 en pantallas medianas */
+.support-grid {
+  @apply w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 items-start;
+}
+
+.faq-section {
+  @apply space-y-4 px-2;
+}
+
+.section-title {
+  @apply text-2xl font-bold text-gray-900 tracking-tight;
+}
+
+.section-subtitle {
+  @apply text-sm text-gray-500 leading-relaxed;
+}
+
+.faq-list {
+  @apply space-y-4 pt-4;
+}
+
+.faq-item {
+  @apply bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-2;
+}
+
+.faq-question {
+  @apply text-sm font-bold text-gray-800;
+}
+
+.faq-answer {
+  @apply text-xs text-gray-500 leading-relaxed;
+}
+
+.support-card {
+  @apply w-full bg-white p-6 sm:p-10 rounded-2xl shadow-sm border border-gray-100;
+}
+
+.support-header {
+  @apply mb-6;
+}
+
+.support-title {
+  @apply text-3xl font-bold text-gray-900 tracking-tight;
+}
+
+.support-subtitle {
+  @apply text-sm text-gray-500 mt-1 leading-relaxed;
+}
+
+.support-form {
+  @apply space-y-5;
+}
+
+.form-group {
+  @apply flex flex-col space-y-1.5;
+}
+
+.form-label {
+  @apply text-xs font-semibold text-gray-700 uppercase tracking-wider;
+}
+
+.form-input {
+  @apply w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition duration-200;
+}
+
+.form-select {
+  @apply w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-600 bg-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition duration-200;
+}
+
+.form-textarea {
+  @apply w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition duration-200 resize-none;
+}
+
+.form-action-zone {
+  @apply pt-2;
+}
+
+.btn-submit {
+  @apply w-full flex items-center justify-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 ease-in-out transform active:scale-[0.98];
+}
+
+.btn-icon {
+  @apply w-4 h-4 transform rotate-45;
+}
+
+/* Estilos para el estado de éxito del formulario */
+.success-message-box {
+  @apply bg-emerald-50 border border-emerald-200 p-6 rounded-2xl text-center;
+}
+
+.btn-reset {
+  @apply text-xs font-semibold text-emerald-700 underline hover:text-emerald-800;
+}
+
+/* Estado deshabilitado del botón cuando faltan campos */
+.btn-submit:disabled {
+  @apply bg-gray-300 cursor-not-allowed shadow-none transform-none;
+}

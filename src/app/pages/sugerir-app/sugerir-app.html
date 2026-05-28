@@ -1,0 +1,88 @@
+<div class="suggest-page-container">
+  <div class="suggest-card">
+    
+    <div *ngIf="formEnviado" class="success-message-box">
+      <h3 class="text-lg font-bold text-emerald-800">¡Sugerencia recibida!</h3>
+      <p class="text-sm text-emerald-600 mt-1">Gracias por tu idea. Nuestro equipo evaluará la mini app para incluirla pronto en el portal.</p>
+      <button (click)="formEnviado = false" class="btn-reset mt-4">Sugerir otra herramienta</button>
+    </div>
+
+    <form *ngIf="!formEnviado" (ngSubmit)="onSubmit()" #suggestForm="ngForm" novalidate>
+      <div class="suggest-header">
+        <h1 class="suggest-title">Sugerir una Mini App</h1>
+        <p class="suggest-subtitle">
+          ¿Te falta alguna herramienta en nuestro portal? Cuéntanos qué utilidad necesitas y la crearemos para ti.
+        </p>
+      </div>
+
+      <div class="suggest-form">
+        
+        <div class="form-group">
+          <label for="appName" class="form-label">Nombre propuesto para la App</label>
+          <input 
+            type="text" 
+            id="appName" 
+            name="appName"
+            [(ngModel)]="formData.appName"
+            placeholder="Ej. Calculadora de Interés Compuesto..." 
+            class="form-input" 
+            required 
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="appCategory" class="form-label">Categoría ideal</label>
+          <select id="appCategory" name="appCategory" [(ngModel)]="formData.appCategory" class="form-select" required>
+            <option value="" disabled selected>Selecciona una categoría</option>
+            <option value="finanzas">Finanzas</option>
+            <option value="marketing">Marketing</option>
+            <option value="herramientas">Herramientas generales</option>
+            <option value="devs">Desarrolladores (Devs)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="appDescription" class="form-label">¿Qué debería hacer esta herramienta?</label>
+          <textarea 
+            id="appDescription" 
+            name="appDescription"
+            [(ngModel)]="formData.appDescription"
+            rows="4" 
+            placeholder="Explica qué campos debería tener o cuáles son las fórmulas..." 
+            class="form-textarea" 
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="userEmail" class="form-label">Tu correo electrónico (Opcional)</label>
+          <input 
+            type="email" 
+            id="userEmail" 
+            name="userEmail"
+            [(ngModel)]="formData.userEmail"
+            placeholder="nombre@ejemplo.com" 
+            class="form-input"
+            email
+            #emailInput="ngModel"
+            [class.input-error]="emailInput.invalid && emailInput.dirty"
+          />
+          
+          <p *ngIf="emailInput.invalid && emailInput.dirty" class="error-text">
+            Por favor, ingresa un correo electrónico válido.
+          </p>
+          <p *ngIf="!(emailInput.invalid && emailInput.dirty)" class="form-help-text">
+            Solo te escribiremos para avisarte cuando la app esté publicada.
+          </p>
+        </div>
+
+        <div class="form-action-zone">
+          <button type="submit" [disabled]="!suggestForm.valid" class="btn-submit">
+            <span>Enviar sugerencia</span>
+          </button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

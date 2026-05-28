@@ -1,0 +1,65 @@
+.footer-container {
+  /* Añadimos relative y z-50 para que se superponga a capas fantasmas */
+  @apply relative z-50 bg-slate-900 border-t border-slate-800 mt-20 text-slate-400;
+}
+
+.footer-wrapper {
+  @apply max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8;
+}
+
+.footer-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8 mb-8;
+}
+
+.footer-brand {
+  @apply space-y-3;
+}
+
+.brand-title {
+  @apply text-lg font-bold tracking-tight text-white;
+}
+
+.brand-accent {
+  @apply text-indigo-400;
+}
+
+.brand-slogan {
+  @apply text-sm text-slate-400 max-w-xs;
+}
+
+.footer-links-group {
+  @apply space-y-3;
+}
+
+.links-title {
+  @apply text-xs font-semibold text-slate-500 uppercase tracking-wider;
+}
+
+.links-list {
+  @apply space-y-2 text-sm;
+}
+
+/* cursor-pointer asegura que el mouse cambie al icono de la mano al pasar por encima */
+.footer-link {
+  @apply text-slate-300 hover:text-indigo-400 transition-colors duration-200 ease-in-out cursor-pointer inline-block;
+}
+
+.footer-divider {
+  @apply border-slate-800 my-6;
+}
+
+.footer-bottom {
+  @apply flex flex-col-reverse md:flex-row justify-between items-center gap-4 text-xs text-slate-500;
+}
+
+.copyright-text {
+  @apply text-center md:text-left;
+}
+
+.footer-status {
+  @apply flex items-center space-x-2 text-slate-300 bg-slate-800/50 px-3 py-1 rounded-full;
+}
+
+.status-indicator {
+  @apply h-2 w-2 rounded-full bg-emerald-400 animate-pulse;
+}

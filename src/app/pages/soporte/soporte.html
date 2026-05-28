@@ -1,0 +1,71 @@
+<div class="support-page-container">
+  <div class="support-grid">
+    
+    <div class="faq-section">
+      <h2 class="section-title">Preguntas Frecuentes</h2>
+      <p class="section-subtitle">Revisa si tu duda ya está resuelta aquí antes de enviar un mensaje.</p>
+      
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3 class="faq-question">¿Las calculadoras tienen algún costo?</h3>
+          <p class="faq-answer">No, todas las herramientas disponibles en Mini Apps Online son 100% gratuitas y de acceso ilimitado.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">¿Mis datos ingresados se quedan guardados?</h3>
+          <p class="faq-answer">En absoluto. Todos los cálculos se ejecutan de forma local en tu propio navegador web.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="support-card">
+      
+      <div *ngIf="formEnviado" class="success-message-box">
+        <h3 class="text-lg font-bold text-emerald-800">¡Mensaje enviado con éxito!</h3>
+        <p class="text-sm text-emerald-600 mt-1">Hemos recibido tu reporte técnico. Nuestro equipo lo revisará lo antes posible.</p>
+        <button (click)="formEnviado = false" class="btn-reset mt-4">Enviar otro mensaje</button>
+      </div>
+
+      <form *ngIf="!formEnviado" (ngSubmit)="onSubmit()" #supportForm="ngForm">
+        <div class="support-header">
+          <h1 class="support-title">Centro de Soporte</h1>
+          <p class="support-subtitle">¿Tienes problemas técnicos o reportes de errores? Escríbenos.</p>
+        </div>
+
+        <div class="support-form">
+          <div class="form-group">
+            <label for="userName" class="form-label">Tu Nombre</label>
+            <input type="text" id="userName" name="userName" [(ngModel)]="formData.userName" placeholder="Ej. Juan Pérez" class="form-input" required />
+          </div>
+
+          <div class="form-group">
+            <label for="userEmail" class="form-label">Correo Electrónico</label>
+            <input type="email" id="userEmail" name="userEmail" [(ngModel)]="formData.userEmail" placeholder="nombre@ejemplo.com" class="form-input" required />
+          </div>
+
+          <div class="form-group">
+            <label for="issueType" class="form-label">¿Cuál es el motivo?</label>
+            <select id="issueType" name="issueType" [(ngModel)]="formData.issueType" class="form-select" required>
+              <option value="" disabled>Selecciona una opción</option>
+              <option value="error">Reportar un error (Bug) en una app</option>
+              <option value="caido">La web carga lento o no funciona</option>
+              <option value="otro">Otra consulta técnica</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="supportMessage" class="form-label">Cuéntanos el problema</label>
+            <textarea id="supportMessage" name="supportMessage" [(ngModel)]="formData.supportMessage" rows="4" placeholder="Describe el error..." class="form-textarea" required></textarea>
+          </div>
+
+          <div class="form-action-zone">
+            <button type="submit" [disabled]="!supportForm.valid" class="btn-submit">
+              <span>Enviar reporte</span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>

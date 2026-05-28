@@ -1,4 +1,8 @@
 import { Routes } from '@angular/router';
+import { TerminosUsoComponent } from './pages/terminos-uso/terminos-uso';
+import { PrivacidadComponent } from './pages/privacidad/privacidad';
+import { SugerirAppComponent } from './pages/sugerir-app/sugerir-app';
+import { SoporteComponent } from './pages/soporte/soporte';
 
 export const routes: Routes = [
   {
@@ -72,6 +76,11 @@ export const routes: Routes = [
     loadComponent: () => import('./tools/devs/color-extractor/color-extractor').then(m => m.ColorExtractorComponent),
     title: 'Extractor de Colores'
   },
+
+  { path: 'terminos-de-uso', component: TerminosUsoComponent },
+  { path: 'politica-de-privacidad', component: PrivacidadComponent },
+  { path: 'sugerir-app', component: SugerirAppComponent },
+  { path: 'soporte', component: SoporteComponent },
 
   { path: '**', redirectTo: '' }
 ];

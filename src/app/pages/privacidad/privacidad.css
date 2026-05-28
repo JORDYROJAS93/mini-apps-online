@@ -1,0 +1,44 @@
+.legal-page-container {
+  @apply min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8;
+}
+
+.legal-card {
+  @apply max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-100;
+}
+
+.legal-header {
+  @apply mb-8 border-b border-gray-100 pb-6;
+}
+
+.legal-title {
+  @apply text-3xl font-bold text-gray-900 tracking-tight;
+}
+
+.legal-date {
+  @apply text-sm text-gray-500 mt-2;
+}
+
+.legal-content {
+  @apply space-y-6 text-gray-600 text-sm leading-relaxed;
+}
+
+.legal-section {
+  @apply space-y-2;
+}
+
+.legal-subtitle {
+  @apply text-lg font-semibold text-gray-800;
+}
+
+.text-highlight {
+  @apply font-semibold text-gray-900;
+}
+
+/* Recuadro enfocado en el cumplimiento de Google AdSense */
+.legal-alert-box {
+  @apply space-y-2 bg-indigo-50/50 p-4 rounded-xl border border-indigo-100/50 text-indigo-950/80;
+}
+
+.alert-box-title {
+  @apply text-lg font-semibold text-indigo-900;
+}
