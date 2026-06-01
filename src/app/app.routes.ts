@@ -77,6 +77,16 @@ export const routes: Routes = [
     title: 'Extractor de Colores'
   },
 
+  //convertidor 
+  //convertidor de word a html
+  {path: 'convertir/word-to-html', loadComponent: () => import('./tools/convertir/word/word-to-html/word-to-html').then(m => m.WordToHtmlComponent), title: 'Convertidor de Word a HTML'},
+  //convertidor de word a pdf
+  {path: 'convertir/word-to-pdf', loadComponent: () => import('./tools/convertir/word/word-to-pdf/word-to-pdf').then(m => m.WordToPdfComponent), title: 'Convertidor de Word a PDF'},
+  //convertidor de pdf a jpg
+  {path: 'convertir/pdf-to-jpg', loadComponent: () => import('./tools/convertir/pdf/pdf-to-jpg/pdf-to-jpg').then(m => m.PdfToJpgComponent), title: 'Convertidor de PDF a JPG'},
+  //convertidor de pdf a png
+  {path: 'convertir/pdf-to-png', loadComponent: () => import('./tools/convertir/pdf/pdf-to-png/pdf-to-png').then(m => m.PdfToPngComponent), title: 'Convertidor de PDF a PNG'},
+
   { path: 'terminos-de-uso', component: TerminosUsoComponent },
   { path: 'politica-de-privacidad', component: PrivacidadComponent },
   { path: 'sugerir-app', component: SugerirAppComponent },

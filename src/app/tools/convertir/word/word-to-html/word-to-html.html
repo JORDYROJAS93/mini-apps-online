@@ -1,0 +1,66 @@
+<div class="converter-page-container">
+  <div class="converter-card">
+    
+    <div class="converter-header">
+      <h1 class="converter-title">Convertidor de Word a HTML</h1>
+      <p class="converter-subtitle">Transforma tus documentos .docx en código HTML limpio, semántico y listo para usar.</p>
+    </div>
+
+    <div *ngIf="errorMensaje" class="error-box">
+      <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+      <span>{{ errorMensaje }}</span>
+    </div>
+
+    <div *ngIf="!htmlResultado && !cargando" class="dropzone-area">
+      <label for="wordFileInput" class="dropzone-label">
+        <div class="dropzone-icon-circle">
+          <i class="fa-solid fa-file-word text-blue-600 text-3xl"></i>
+        </div>
+        <span class="dropzone-text-primary">Haz clic para buscar tu archivo Word</span>
+        <span class="dropzone-text-secondary">Soporta estrictamente archivos .docx</span>
+        <input type="file" id="wordFileInput" (change)="onFileChange($event)" accept=".docx" class="hidden-input" />
+      </label>
+    </div>
+
+    <div *ngIf="cargando" class="loading-box">
+      <div class="spinner"></div>
+      <p class="loading-text">Analizando documento y estructurando HTML limpio...</p>
+    </div>
+
+    <div *ngIf="htmlResultado && !cargando" class="result-layout">
+      
+      <div class="result-actions-bar">
+        <div class="file-info">
+          <i class="fa-solid fa-file-code text-indigo-500 text-lg"></i>
+          <span class="file-name-text">{{ nombreArchivo }}</span>
+        </div>
+        <div class="actions-buttons-group">
+          <button (click)="copiarAlPortapapeles()" [ngClass]="{'btn-success': copiadoStatus}" class="btn-action-copy">
+            <i [ngClass]="copiadoStatus ? 'fa-solid fa-check' : 'fa-solid fa-copy'"></i>
+            <span>{{ copiadoStatus ? '¡Copiado!' : 'Copiar código HTML' }}</span>
+          </button>
+          <button (click)="limpiar()" class="btn-action-clear">
+            <i class="fa-solid fa-rotate-left"></i>
+            <span>Subir otro archivo</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="result-grid">
+        
+        <div class="panel-block">
+          <label class="panel-inner-label">Código Fuente HTML</label>
+          <textarea readonly class="code-textarea">{{ htmlResultado }}</textarea>
+        </div>
+
+        <div class="panel-block">
+          <label class="panel-inner-label">Vista Previa Renderizada</label>
+          <div class="preview-output-box" [innerHTML]="htmlResultado"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

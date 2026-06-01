@@ -1,0 +1,227 @@
+/* ===== Contenedores Base ===== */
+.converter-page-container {
+  @apply max-w-2xl mx-auto my-8 px-4 sm:px-6;
+}
+
+.converter-card {
+  @apply bg-white rounded-3xl shadow-lg border border-gray-100 p-6 sm:p-8 space-y-6;
+}
+
+.converter-header {
+  @apply space-y-2 border-b border-gray-100 pb-5;
+}
+
+.converter-title {
+  @apply text-xl sm:text-2xl font-bold text-gray-900 tracking-tight;
+}
+
+.converter-subtitle {
+  @apply text-sm text-gray-500 leading-relaxed;
+}
+
+/* ===== Dropzone Interactivo ===== */
+.dropzone-area {
+  @apply relative border-2 border-dashed border-gray-300 rounded-2xl p-8 sm:p-12 
+         transition-all duration-200 ease-in-out cursor-pointer
+         hover:border-blue-400 hover:bg-blue-50/30 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+.dropzone-area.dropzone-dragover {
+  @apply border-blue-500 bg-blue-100/50 scale-[1.02];
+}
+
+.dropzone-label {
+  @apply flex flex-col items-center justify-center space-y-4 cursor-pointer w-full;
+}
+
+.dropzone-icon-circle {
+  @apply bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center shadow-sm 
+         transition-transform duration-200 group-hover:scale-110;
+}
+
+.dropzone-text-primary {
+  @apply text-base font-semibold text-gray-700 text-center;
+}
+
+.dropzone-text-secondary {
+  @apply text-sm text-gray-500 text-center;
+}
+
+.dropzone-hint {
+  @apply text-xs text-gray-400 text-center mt-1 px-3 py-1 bg-gray-100 rounded-full;
+}
+
+.hidden-input { @apply hidden; }
+
+/* ===== Mensajes de Error ===== */
+.error-box {
+  @apply bg-rose-50 border border-rose-200 text-rose-700 text-sm p-4 rounded-xl 
+         flex items-start gap-3 animate-slideIn;
+}
+
+.error-dismiss {
+  @apply ml-auto text-rose-400 hover:text-rose-600 transition-colors p-1;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+.animate-shake { animation: shake 0.3s ease-in-out; }
+
+/* ===== Procesamiento & Progreso ===== */
+.processing-box {
+  @apply space-y-4 py-4;
+}
+
+.processing-header {
+  @apply flex items-center gap-4;
+}
+
+.spinner {
+  @apply w-8 h-8 border-2 border-gray-200 border-t-blue-600 rounded-full animate-spin flex-shrink-0;
+}
+
+.processing-info { @apply flex-1 min-w-0; }
+.processing-title { @apply text-sm font-medium text-gray-800; }
+.processing-filename { 
+  @apply text-xs text-gray-500 truncate max-w-xs; 
+}
+
+/* Barra de progreso */
+.progress-track {
+  @apply h-2 bg-gray-100 rounded-full overflow-hidden;
+}
+
+.progress-fill {
+  @apply h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full 
+         transition-all duration-300 ease-out;
+}
+
+.progress-text {
+  @apply text-xs text-gray-500 text-right font-medium;
+}
+
+/* ===== Estado de Éxito ===== */
+.success-box-layout {
+  @apply flex flex-col items-center justify-center py-4 text-center space-y-5 animate-fadeIn;
+}
+
+.success-icon-badge {
+  @apply bg-emerald-50 w-20 h-20 rounded-full flex items-center justify-center shadow-sm;
+}
+
+.success-title { @apply text-lg font-bold text-gray-800; }
+.success-description { @apply text-sm text-gray-500 max-w-sm leading-relaxed; }
+
+.processed-file-card {
+  @apply flex items-center gap-3 bg-slate-50 border border-slate-200 p-4 rounded-xl w-full max-w-sm;
+}
+
+.processed-file-info { @apply flex-1 min-w-0 text-left; }
+.processed-file-name { 
+  @apply block text-sm font-medium text-slate-800 truncate; 
+}
+.processed-file-meta { 
+  @apply text-xs text-slate-500; 
+}
+
+.success-actions {
+  @apply flex flex-col sm:flex-row gap-3 w-full max-w-xs;
+}
+
+.btn-download-secondary {
+  @apply flex items-center justify-center gap-2 bg-white border border-gray-300 
+         hover:bg-gray-50 text-gray-700 text-sm font-medium px-5 py-2.5 rounded-xl 
+         transition-colors shadow-sm;
+}
+
+.btn-reset-tool {
+  @apply flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 
+         text-white text-sm font-semibold px-5 py-2.5 rounded-xl 
+         transition-colors shadow-sm flex-1;
+}
+
+/* ===== Animaciones ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-slideIn { animation: slideIn 0.3s ease-out; }
+
+/* ===== Contenedor de Renderizado PDF (oculto) ===== */
+/* ===== Contenedor de Renderizado PDF (oculto) ===== */
+.pdf-render-container {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  width: 794px; /* Ancho exacto del papel A4 a 96 DPI */
+  background-color: #ffffff;
+}
+
+.documento-word-renderizado {
+  @apply p-8 bg-white text-gray-900 font-sans;
+  font-family: 'Segoe UI', Arial, sans-serif !important;
+  line-height: 1.6 !important;
+}
+
+/* REGLA MAESTRA ANTI-CORTE: Forzar que ningún bloque estructural se rompa a la mitad */
+.documento-word-renderizado p,
+.documento-word-renderizado table,
+.documento-word-renderizado tr,
+.documento-word-renderizado h1,
+.documento-word-renderizado h2,
+.documento-word-renderizado h3,
+.documento-word-renderizado h4 {
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
+}
+
+.documento-word-renderizado img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  /* Evita que la imagen se mutile si está envuelta */
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
+}
+
+.documento-word-renderizado table {
+  @apply w-full border-collapse mb-4;
+}
+
+.documento-word-renderizado table td,
+.documento-word-renderizado table th {
+  @apply border border-gray-300 p-2;
+}
+
+/* ===== Responsive & Accesibilidad ===== */
+@media (max-width: 640px) {
+  .converter-card { @apply p-5; }
+  .dropzone-area { @apply p-6; }
+  .success-actions { @apply flex-col; }
+}
+
+/* Focus visible para navegación con teclado */
+.dropzone-area:focus-visible,
+.btn-reset-tool:focus-visible,
+.btn-download-secondary:focus-visible {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* Preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

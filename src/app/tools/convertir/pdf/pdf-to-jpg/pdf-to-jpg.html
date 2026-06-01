@@ -1,0 +1,167 @@
+<section class="converter-page-container" aria-labelledby="converter-title">
+  <article class="converter-card">
+    
+    <header class="converter-header">
+      <h1 id="converter-title" class="converter-title">Convertidor de PDF a JPG</h1>
+      <p class="converter-subtitle">Extrae imágenes de alta calidad de tus documentos PDF. Convierte cada página en un archivo JPG descargable.</p>
+    </header>
+
+    @if (converterService.hasError()) {
+      <div role="alert" class="error-box animate-shake">
+        <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+        <span>{{ converterService.errorMessage() }}</span>
+        <button type="button" class="error-dismiss" (click)="resetConverter()" aria-label="Cerrar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    }
+
+    @if (state === 'idle' || converterService.hasError()) {
+      <div class="quality-selector">
+        <label for="quality">Calidad de imagen:</label>
+        <select id="quality" [(ngModel)]="quality" class="quality-select">
+          <option [ngValue]="1.0">Baja (72 DPI) - Archivos pequeños</option>
+          <option [ngValue]="1.5">Media (108 DPI) - Recomendada</option>
+          <option [ngValue]="2.0">Alta (144 DPI) - Mejor calidad</option>
+          <option [ngValue]="3.0">Muy Alta (216 DPI) - Máxima calidad</option>
+        </select>
+      </div>
+
+      <div 
+        #fileDropZone
+        class="dropzone-area"
+        [class.dropzone-dragover]="isDragging()"
+        tabindex="0"
+        role="button"
+        aria-label="Arrastra tu archivo PDF o presiona Enter para buscar"
+        (click)="triggerFileInput()"
+        (keydown.enter)="triggerFileInput()"
+        (keydown.space)="triggerFileInput(); $event.preventDefault()">
+        
+        <label for="pdfInput" class="dropzone-label">
+          <div class="dropzone-icon-circle" aria-hidden="true">
+            <i class="fa-solid fa-file-pdf text-red-600 text-3xl"></i>
+          </div>
+          <span class="dropzone-text-primary">Arrastra tu archivo PDF aquí</span>
+          <span class="dropzone-text-secondary">o haz clic para buscar archivo</span>
+          <span class="dropzone-hint">Máximo 50MB • Procesamiento 100% local</span>
+        </label>
+        
+        <input 
+          type="file" 
+          #fileInput
+          id="pdfInput" 
+          (change)="onFileInput($event)" 
+          accept=".pdf" 
+          class="hidden-input"
+          aria-hidden="true" />
+      </div>
+    }
+
+    @if (converterService.isProcessing()) {
+      <div class="processing-box" role="status" aria-live="polite">
+        <div class="processing-header">
+          <div class="spinner" aria-hidden="true"></div>
+          <div class="processing-info">
+            <p class="processing-title">Procesando página {{ currentPage }}...</p>
+            <p class="processing-filename" [title]="fileName">{{ fileName }}</p>
+          </div>
+        </div>
+        
+        <div class="progress-track" aria-label="Progreso" [attr.aria-valuenow]="progress" role="progressbar">
+          <div class="progress-fill" [style.width.%]="progress"></div>
+        </div>
+        <span class="progress-text">{{ progress }}% completado</span>
+      </div>
+    }
+
+    @if (converterService.isSuccess() && result; as conversionResult) {
+      <div class="success-section animate-fadeIn" role="status" aria-live="assertive">
+        
+        <div class="success-header">
+          <div class="success-icon-badge" aria-hidden="true">
+            <i class="fa-solid fa-circle-check text-emerald-500 text-5xl"></i>
+          </div>
+          <div>
+            <h2 class="success-title">¡Conversión Exitosa!</h2>
+            <p class="success-description">
+              Se generaron {{ conversionResult.totalPages }} imágenes JPG de alta resolución.
+            </p>
+          </div>
+        </div>
+
+        <div class="download-actions">
+          <button (click)="downloadAllAsZip()" class="btn-primary">
+            <i class="fa-solid fa-file-zipper"></i>
+            Descargar todo en ZIP
+          </button>
+          <button (click)="downloadAllIndividual()" class="btn-secondary">
+            <i class="fa-solid fa-images"></i>
+            Descargar individualmente
+          </button>
+        </div>
+
+        <div class="view-toggle">
+          <button 
+            [class.active]="viewMode() === 'grid'" 
+            (click)="viewMode.set('grid')"
+            class="toggle-btn">
+            <i class="fa-solid fa-table-cells"></i>
+            Cuadrícula
+          </button>
+          <button 
+            [class.active]="viewMode() === 'preview'" 
+            (click)="viewMode.set('preview')"
+            class="toggle-btn">
+            <i class="fa-solid fa-list"></i>
+            Lista
+          </button>
+        </div>
+
+        @if (viewMode() === 'grid') {
+          <div class="images-preview-grid">
+            @for (image of conversionResult.images; track image.pageNumber) {
+              <div class="preview-thumb-card group">
+                <div class="image-preview w-full h-full">
+                  <img class="thumb-img" [src]="image.dataUrl" [alt]="'Página ' + image.pageNumber" loading="lazy" />
+                </div>
+                <button 
+                  (click)="downloadImage(image, $index)" 
+                  class="btn-download-thumb"
+                  aria-label="Descargar página {{ image.pageNumber }}">
+                  <i class="fa-solid fa-download"></i>
+                </button>
+              </div>
+            }
+          </div>
+        }
+
+        @if (viewMode() === 'preview') {
+          <div class="images-list">
+            @for (image of conversionResult.images; track image.pageNumber) {
+              <div class="list-item">
+                <img [src]="image.dataUrl" [alt]="'Página ' + image.pageNumber" loading="lazy" />
+                <div class="list-info">
+                  <span class="page-number font-semibold text-gray-800">Página {{ image.pageNumber }}</span>
+                  <span class="image-size text-xs text-gray-500">{{ image.width }} × {{ image.height }} px</span>
+                </div>
+                <button 
+                  (click)="downloadImage(image, $index)" 
+                  class="flex-none bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-xl text-xs font-medium transition-colors">
+                  <i class="fa-solid fa-download mr-1"></i>
+                  Descargar
+                </button>
+              </div>
+            }
+          </div>
+        }
+
+        <button (click)="resetConverter()" class="btn-reset">
+          <i class="fa-solid fa-rotate-left"></i>
+          Convertir otro PDF
+        </button>
+      </div>
+    }
+
+  </article>
+</section>

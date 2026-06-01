@@ -1,0 +1,142 @@
+.converter-page-container {
+  @apply max-w-5xl mx-auto my-10 p-4 sm:p-6;
+}
+
+.converter-card {
+  @apply bg-white rounded-3xl shadow-sm border border-gray-100 p-6 sm:p-8 space-y-6;
+}
+
+.converter-header {
+  @apply space-y-1 border-b border-gray-100 pb-4;
+}
+
+.converter-title {
+  @apply text-xl sm:text-2xl font-bold text-gray-900 tracking-tight;
+}
+
+.converter-subtitle {
+  @apply text-xs sm:text-sm text-gray-400 leading-relaxed;
+}
+
+/* Dropzone de Carga */
+.dropzone-area {
+  @apply border-2 border-dashed border-gray-200 hover:border-indigo-400 bg-gray-50/40 rounded-2xl p-8 sm:p-12 transition duration-200 ease-in-out cursor-pointer;
+}
+
+.dropzone-label {
+  @apply flex flex-col items-center justify-center space-y-3 cursor-pointer w-full;
+}
+
+.dropzone-icon-circle {
+  @apply bg-blue-50 w-14 h-14 rounded-full flex items-center justify-center shadow-sm;
+}
+
+.dropzone-text-primary {
+  @apply text-sm font-semibold text-gray-700 text-center;
+}
+
+.dropzone-text-secondary {
+  @apply text-xs text-gray-400 text-center;
+}
+
+.hidden-input {
+  @apply hidden;
+}
+
+/* Alertas y Errores */
+.error-box {
+  @apply bg-rose-50 border border-rose-100 text-rose-700 text-xs sm:text-sm p-4 rounded-xl flex items-center;
+}
+
+/* Cargando / Spinner */
+.loading-box {
+  @apply flex flex-col items-center justify-center py-12 space-y-4;
+}
+
+.spinner {
+  @apply w-10 h-10 border-4 border-gray-100 border-t-indigo-600 rounded-full animate-spin;
+}
+
+.loading-text {
+  @apply text-xs sm:text-sm text-gray-400 font-medium;
+}
+
+/* Resultados */
+.result-layout {
+  @apply space-y-4 animate-fadeIn;
+}
+
+.result-actions-bar {
+  @apply flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-gray-50 p-3 rounded-xl border border-gray-100;
+}
+
+.file-info {
+  @apply flex items-center space-x-2 px-2 text-xs sm:text-sm text-gray-600 font-medium;
+}
+
+.file-name-text {
+  @apply truncate max-w-[240px] sm:max-w-xs;
+}
+
+.actions-buttons-group {
+  @apply flex items-center gap-2 w-full sm:w-auto;
+}
+
+.btn-action-copy {
+  @apply flex-1 sm:flex-none flex items-center justify-center space-x-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-sm transition duration-150;
+}
+
+.btn-success {
+  @apply bg-emerald-600 hover:bg-emerald-700 !important;
+}
+
+.btn-action-clear {
+  @apply flex-1 sm:flex-none flex items-center justify-center space-x-1.5 bg-white border border-gray-200 hover:bg-gray-100 text-gray-600 text-xs font-bold px-4 py-2.5 rounded-lg shadow-sm transition duration-150;
+}
+
+/* Paneles paralelos */
+.result-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.panel-block {
+  @apply flex flex-col space-y-2;
+}
+
+.panel-inner-label {
+  @apply text-xs font-bold text-gray-400 uppercase tracking-wider;
+}
+
+.code-textarea {
+  @apply w-full h-80 p-4 bg-slate-900 text-emerald-400 font-mono text-xs rounded-xl border border-slate-800 focus:outline-none resize-none shadow-inner overflow-y-auto;
+}
+
+.preview-output-box {
+  @apply w-full h-80 p-4 bg-white border border-gray-200 rounded-xl overflow-y-auto text-sm text-gray-800 max-w-none shadow-inner;
+}
+
+/* Estilos de espaciado interior automáticos para el contenido inyectado */
+.preview-output-box p {
+  @apply mb-3 leading-relaxed;
+}
+
+.preview-output-box h1, .preview-output-box h2, .preview-output-box h3 {
+  @apply font-bold mt-4 mb-2 text-gray-900;
+}
+
+.preview-output-box h1 { @apply text-xl; }
+.preview-output-box h2 { @apply text-lg; }
+
+.preview-output-box ul, .preview-output-box ol {
+  @apply pl-5 mb-3 list-disc;
+}
+
+/* Animaciones de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
