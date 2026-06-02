@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-code-minimizer',
@@ -9,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './code-minimizer.html',
   styleUrl: './code-minimizer.css',
 })
-export class CodeMinimizerComponent {
+export class CodeMinimizerComponent implements OnInit {
   codigoInput: string = '';
   codigoOutput: string = '';
   tipoCodigo: 'css' | 'js' = 'css';
@@ -19,6 +20,17 @@ export class CodeMinimizerComponent {
     ahorro: 0
   };
   copiado: boolean = false;
+
+  constructor(
+    private titleService: Title,
+    private metaService: Meta,
+  ) {}
+
+  ngOnInit() {
+    // SEO: Configuramos título y meta descripción
+    this.titleService.setTitle('Minimizador de Código CSS/JS - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Minimiza tu código CSS y JS de forma rápida y sencilla. ¡Prueba nuestro minimizador en línea ahora!' });
+  }
 
   procesarCodigo() {
     this.copiado = false;

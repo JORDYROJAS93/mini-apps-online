@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-password-gen',
@@ -8,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './password-gen.html',
   styleUrl: './password-gen.css',
 })
-export class PasswordGenComponent {
+export class PasswordGenComponent implements OnInit {
   password = '';
   largo = 16;
   
@@ -18,7 +19,12 @@ export class PasswordGenComponent {
   includeNumbers = true;
   includeSymbols = true;
 
-  constructor() { this.generar(); }
+  constructor(private TitleService: Title, private metaService: Meta) { this.generar(); }
+
+  ngOnInit() {
+    this.TitleService.setTitle('Generador de Contraseñas - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Generador de Contraseñas - Mini Apps Online' });
+  }
 
   generar() {
     const sets = {

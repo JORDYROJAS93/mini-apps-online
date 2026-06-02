@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 interface UnidadesDiccionario {
   [key: string]: { [unidad: string]: number };
@@ -13,7 +14,7 @@ interface UnidadesDiccionario {
   templateUrl: './unit-converter.html',
   styleUrls: ['./unit-converter.css'], 
 })
-export class UnitConverterComponent {
+export class UnitConverterComponent  implements OnInit {
   categorias = ['Longitud', 'Peso / Masa', 'Temperatura'];
   categoriaSeleccionada = 'Longitud';
 
@@ -59,8 +60,13 @@ export class UnitConverterComponent {
     }
   };
 
-  constructor() {
+  constructor(private TitleService: Title, private metaService: Meta) {
     this.convertir();
+  }
+
+  ngOnInit() {
+    this.TitleService.setTitle('Convertidor de Unidades - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Convertidor de Unidades - Mini Apps Online' });
   }
 
   onCategoriaChange() {

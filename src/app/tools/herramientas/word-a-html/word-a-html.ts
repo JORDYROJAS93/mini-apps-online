@@ -1,8 +1,9 @@
-import { Component, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, ChangeDetectorRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { QuillModule, QuillModules } from 'ngx-quill';
 import * as mammoth from 'mammoth';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-word-a-html',
@@ -11,7 +12,7 @@ import * as mammoth from 'mammoth';
   templateUrl: './word-a-html.html',
   styleUrls: ['./word-a-html.css']
 })
-export class WordAHtmlComponent {
+export class WordAHtmlComponent implements OnInit {
   // VARIABLE 1: Solo para el Editor Visual
   visualContent: string = '';
   
@@ -24,7 +25,12 @@ export class WordAHtmlComponent {
   
   quillEditorRef: any;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private TitleService: Title, private metaService: Meta) {}
+
+  ngOnInit() {
+    this.TitleService.setTitle('Convertidor de Word a HTML - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Convertidor de Word a HTML - Mini Apps Online' });
+  }
 
   editorModules: QuillModules = {
     toolbar: [

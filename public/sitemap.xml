@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<!-- url general -->
+  <url>
+    <loc>https://mini-apps-online.vercel.app/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- url de categorías de finanzas -->
+  <!-- url de subcategorías de calculadora de IGV -->
+  <url>
+    <loc>https://mini-apps-online.vercel.app/igv</loc>
+    <priority>0.8</priority>
+  </url>
+  <!-- url de subcategorías de recibo por honorarios -->
+   <url>
+    <loc>https://mini-apps-online.vercel.app/honorarios</loc>
+    <priority>0.8</priority>
+  </url>
+  <!-- url de subcategorías de conversor de monedas -->
+   <url>
+    <loc>https://mini-apps-online.vercel.app/conversor-monedas</loc>
+    <priority>0.8</priority>
+  </url>
+  <!-- url de subcategorías de calculadora de prestamos -->
+   <url>
+    <loc>https://mini-apps-online.vercel.app/loan-calculator</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- url de categorías de marketing -->
+  <!-- url de subcategorías de generador de QR-->
+    <url>
+      <loc>https://mini-apps-online.vercel.app/qr-generator</loc>
+      <priority>0.8</priority>
+    </url>
+  <!-- url de subcategorías de enlace de whatsapp -->
+    <url>
+      <loc>https://mini-apps-online.vercel.app/whatsapp-link</loc>
+      <priority>0.8</priority>
+    </url>
+
+  <!-- url de categorías de herramientas -->
+  <!-- url de subcategorías de convertidor de word a html -->
+    <url>
+      <loc>https://mini-apps-online.vercel.app/word-a-html</loc>
+      <priority>0.8</priority>
+    </url>
+  <!-- url de subcategorías de contador de caracteres -->
+    <url>
+      <loc>https://mini-apps-online.vercel.app/counter-text</loc>
+      <priority>0.8</priority>
+    </url>
+  <!-- url de subcategorías de generador de contraseñas -->
+    <url>
+      <loc>https://mini-apps-online.vercel.app/password-gen</loc>
+      <priority>0.8</priority>
+    </url>
+  <!-- url de subcategorías de conversor de unidades -->
+    <url>
+      <loc>https://mini-apps-online.vercel.app/conversor-unidades</loc>
+      <priority>0.8</priority>
+    </url>
+
+
+  <!-- url de categorías de devs -->
+    <!-- url de subcategorías de formateador de json -->
+      <url>
+        <loc>https://mini-apps-online.vercel.app/json-formatter</loc>
+        <priority>0.8</priority>
+      </url>
+    <!-- url de subcategorías de minificador de css/js -->
+      <url>
+        <loc>https://mini-apps-online.vercel.app/code-minimizer</loc>
+        <priority>0.8</priority>
+      </url>
+    <!-- url de subcategorías de extractor de colores -->
+      <url>
+        <loc>https://mini-apps-online.vercel.app/color-extractor</loc>
+        <priority>0.8</priority>
+      </url>
+
+
+  <!-- url de categorías de convertir -->
+    <!-- url de subcategorías de convertidor de word a pdf -->
+  <url>
+    <loc>https://mini-apps-online.vercel.app/convertir/word-to-pdf</loc>
+    <priority>0.8</priority>
+  </url>
+    <!-- url de subcategorías de convertidor de pdf a word  faltaaaaaaaaaaaaa-->
+  <url>
+    <loc>https://mini-apps-online.vercel.app/convertir/pdf-to-word</loc>
+    <priority>0.8</priority>
+  </url>
+  <!-- url de subcategorías de convertidor de pdf a jpg -->
+  <url>
+    <loc>https://mini-apps-online.vercel.app/convertir/pdf-to-jpg</loc>
+    <priority>0.8</priority>
+  </url>
+  <!-- url de subcategorías de convertidor de pdf a png -->
+  <url>
+    <loc>https://mini-apps-online.vercel.app/convertir/pdf-to-png</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>

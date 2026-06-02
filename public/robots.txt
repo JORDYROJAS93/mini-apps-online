@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Añade la ruta de tu mapa del sitio web cuando lo tengas listo
+Sitemap: https://https://mini-apps-online.vercel.app/sitemap.xml

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 export interface CronogramaItem {
   mes: number;
@@ -36,7 +37,14 @@ export class LoanCalculatorComponent implements OnInit {
   totalCapital: number = 0;
   cronograma: CronogramaItem[] = [];
 
+  constructor(
+    private TitleService: Title,
+    private metaService: Meta,
+  ) {}
+
   ngOnInit(): void {
+    this.TitleService.setTitle('Calculadora de Préstamos - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Calculadora de Préstamos - Mini Apps Online' });
     this.calcular();
   }
 

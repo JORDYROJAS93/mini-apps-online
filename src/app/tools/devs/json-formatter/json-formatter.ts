@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-json-formatter',
@@ -9,12 +10,22 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './json-formatter.html',
   styleUrl: './json-formatter.css',
 })
-export class JsonFormatterComponent {
+export class JsonFormatterComponent implements OnInit {
   jsonInput: string = '';
   jsonOutput: string = '';
   errorMensaje: string | null = null;
   esValido: boolean | null = null;
   copiado: boolean = false;
+
+  constructor(
+    private TitleService: Title,
+    private metaService: Meta
+  ) {}
+
+  ngOnInit() {
+    this.TitleService.setTitle('Formateador de JSON - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Formateador de JSON - Mini Apps Online' });
+  }
 
   procesarJson(identacion: number = 2) {
     this.errorMensaje = null;

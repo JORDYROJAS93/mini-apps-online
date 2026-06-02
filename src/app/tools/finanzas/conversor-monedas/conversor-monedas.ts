@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-conversor-monedas',
@@ -9,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './conversor-monedas.html',
   styleUrl: './conversor-monedas.css',
 })
-export class ConversorMonedasComponent {
+export class ConversorMonedasComponent implements OnInit {
   monto: number = 1;
   monedaOrigen: string = 'USD';
   monedaDestino: string = 'PEN'; // Por defecto a Soles peruanos
@@ -38,8 +39,15 @@ export class ConversorMonedasComponent {
     COP: 3850.0
   };
 
-  constructor() {
+  constructor(private TitleService: Title,
+    private metaService: Meta,) {
+    
     this.calcularConversion();
+  }
+
+  ngOnInit() {
+    this.TitleService.setTitle('Conversor de Monedas - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Conversor de Monedas - Mini Apps Online' });
   }
 
   calcularConversion() {

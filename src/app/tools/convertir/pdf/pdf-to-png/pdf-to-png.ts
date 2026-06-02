@@ -3,6 +3,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import JSZip from 'jszip';
 import { PageImage, PdfToPngService } from '../../../../services/pdf-to-png.service'; // Asegura tu ruta del servicio
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pdf-to-png',
@@ -22,6 +23,8 @@ export class PdfToPngComponent implements OnInit {
   private isBrowser: boolean;
 
   constructor(
+    private titleService: Title,
+    private metaService: Meta,
     public readonly converterService: PdfToPngService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
@@ -43,6 +46,8 @@ export class PdfToPngComponent implements OnInit {
 
   ngOnInit() {
     if (this.isBrowser) this.setupDragAndDrop();
+    this.titleService.setTitle('Convertidor de PDF a PNG - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Convierte tus archivos PDF a imágenes PNG de alta calidad de forma rápida y sencilla. ¡Prueba nuestro convertidor en línea ahora!' });
   }
 
   private setupDragAndDrop() {

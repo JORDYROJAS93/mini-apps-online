@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-word-to-html',
@@ -19,6 +20,8 @@ export class WordToHtmlComponent implements OnInit {
   esNavegador: boolean = false;
 
   constructor(
+    private titleService: Title,
+    private metaService: Meta,
     @Inject(PLATFORM_ID) private platformId: Object,
     private cdr: ChangeDetectorRef // Nos ayuda a forzar el rediseño de la vista en Angular
   ) {
@@ -29,6 +32,8 @@ export class WordToHtmlComponent implements OnInit {
     if (this.esNavegador) {
       this.inicializarMammoth();
     }
+    this.titleService.setTitle('Convertidor de Word a HTML - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Convierte tus archivos de Word a HTML de forma rápida y sencilla. ¡Prueba nuestro convertidor en línea ahora!' });
   }
 
   // Importación dinámica local y segura para evitar problemas con SSR e internet

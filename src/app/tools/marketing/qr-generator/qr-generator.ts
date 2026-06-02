@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import * as QRCode from 'qrcode';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-qr-generator',
@@ -10,9 +11,16 @@ import * as QRCode from 'qrcode';
   templateUrl: './qr-generator.html',
   styleUrl: './qr-generator.css',
 })
-export class QrGeneratorComponent {
+export class QrGeneratorComponent implements OnInit {
   texto: string = '';
   qrImage: string = '';
+
+  constructor(private TitleService: Title, private metaService: Meta) { }
+
+  ngOnInit() {
+    this.TitleService.setTitle('Generador de Códigos QR - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Generador de Códigos QR - Mini Apps Online' });
+  }
 
   async generarQR() {
     if (!this.texto.trim()) {

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-color-extractor',
@@ -9,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './color-extractor.html',
   styleUrl: './color-extractor.css',
 })
-export class ColorExtractorComponent {
+export class ColorExtractorComponent implements OnInit {
   @ViewChild('canvasRef') canvasRef!: ElementRef<HTMLCanvasElement>;
   
   imageSrc: string | null = null;
@@ -17,6 +18,18 @@ export class ColorExtractorComponent {
   colorSeleccionadoRgb: string = 'rgb(59, 130, 246)';
   paletaSugerida: string[] = [];
   copiado: boolean = false;
+
+  constructor(
+    private TitleService: Title,
+    private metaService: Meta
+  ) {}
+
+  ngOnInit() {
+    this.TitleService.setTitle('Extractor de Colores - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Extractor de Colores - Mini Apps Online' });
+
+  }
+
 
   onFileSelected(event: any) {
     const file = event.target.files[0];

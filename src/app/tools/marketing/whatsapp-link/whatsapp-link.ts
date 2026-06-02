@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-whatsapp-link',
@@ -9,11 +10,18 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './whatsapp-link.html',
   styleUrl: './whatsapp-link.css',
 })
-export class WhatsappLink {
+export class WhatsappLink implements OnInit {
   telefono: string = '';
   mensaje: string = '';
   enlaceGenerado: string = '';
   copiado: boolean = false; // Estado para manejar el feedback visual del botón
+
+  constructor(private TitleService: Title, private metaService: Meta) { }
+
+  ngOnInit() {
+    this.TitleService.setTitle('Generador de Enlaces de WhatsApp - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Generador de Enlaces de WhatsApp - Mini Apps Online' });
+  }
 
   generarLink() {
     // Quitamos los espacios antes y después

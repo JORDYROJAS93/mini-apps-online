@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import JSZip from 'jszip';
 import { PageImage, PdfToJpgService } from '../../../../services/pdf-to-jpg.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pdf-to-jpg',
@@ -25,8 +26,11 @@ export class PdfToJpgComponent implements OnInit {
   private isBrowser: boolean;
 
   constructor(
+    private titleService: Title,
+    private metaService: Meta,
     public readonly converterService: PdfToJpgService,
     @Inject(PLATFORM_ID) private platformId: Object // 👈 Inyectamos el ID de la plataforma
+    
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId); // 👈 Evaluamos si es el cliente
 
@@ -47,6 +51,11 @@ export class PdfToJpgComponent implements OnInit {
   ngOnInit() {
       if (this.isBrowser) 
     this.setupDragAndDrop();
+
+    // SEO: Configuramos título y meta descripción
+    this.titleService.setTitle('Convertidor de PDF a JPG - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Convierte tus archivos PDF a imágenes JPG de alta calidad de forma rápida y sencilla. ¡Prueba nuestro convertidor en línea ahora!' });
+  
   }
 
   private setupDragAndDrop() {

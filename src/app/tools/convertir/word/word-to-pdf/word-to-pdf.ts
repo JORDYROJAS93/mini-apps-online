@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef, effect, signal, In
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { WordPdfService, ConversionState, ConversionResult } from '../../../../services/word-pdf.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-word-to-pdf',
@@ -20,6 +21,8 @@ export class WordToPdfComponent implements OnInit, AfterViewInit, OnDestroy {
   private isBrowser: boolean; // Flag de seguridad para SSR
 
   constructor(
+    private titleService: Title,
+    private metaService: Meta,
     public readonly converterService: WordPdfService,
     @Inject(PLATFORM_ID) private platformId: Object // Inyección para detectar entorno
   ) {
@@ -44,6 +47,9 @@ export class WordToPdfComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.isBrowser) {
       this.loadConversionLibraries();
     }
+    // SEO: Configuramos título y meta descripción
+    this.titleService.setTitle('Convertidor de Word a PDF - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Convierte tus archivos de Word a PDF de forma rápida y sencilla. ¡Prueba nuestro convertidor en línea ahora!' });
   }
 
   // CORRECCIÓN CLAVE 2: Mover Drag&Drop aquí para asegurar que @ViewChild ya exista en el DOM

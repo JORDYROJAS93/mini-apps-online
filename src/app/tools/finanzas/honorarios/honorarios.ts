@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-honorarios',
@@ -9,13 +10,24 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './honorarios.html',
   styleUrl: './honorarios.css',
 })
-export class HonorariosComponent {
+export class HonorariosComponent implements OnInit {
   montoBruto: number | null = null;
   retencionPorcentaje: number = 8; // Por defecto 8% (común en Perú y otros países)
   
   // Resultados
   montoRetencion: number = 0;
   montoNeto: number = 0;
+
+  constructor(
+    private TitleService: Title,
+    private metaService: Meta,
+  
+  ) {}
+
+  ngOnInit() {
+    this.TitleService.setTitle('Calculadora de Honorarios - Mini Apps Online');
+    this.metaService.updateTag({ name: 'description', content: 'Calculadora de Honorarios - Mini Apps Online' });
+  }
 
   calcular() {
     if (this.montoBruto && this.montoBruto > 0) {

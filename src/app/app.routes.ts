@@ -86,6 +86,10 @@ export const routes: Routes = [
   {path: 'convertir/pdf-to-jpg', loadComponent: () => import('./tools/convertir/pdf/pdf-to-jpg/pdf-to-jpg').then(m => m.PdfToJpgComponent), title: 'Convertidor de PDF a JPG'},
   //convertidor de pdf a png
   {path: 'convertir/pdf-to-png', loadComponent: () => import('./tools/convertir/pdf/pdf-to-png/pdf-to-png').then(m => m.PdfToPngComponent), title: 'Convertidor de PDF a PNG'},
+  //convertidor de pdf a word
+  {path: 'convertir/pdf-to-word', loadComponent: () => import('./tools/convertir/pdf/pdf-to-word/pdf-to-word').then(m => m.PdfToWordComponent), title: 'Convertidor de PDF a Word'},
+
+
 
   { path: 'terminos-de-uso', component: TerminosUsoComponent },
   { path: 'politica-de-privacidad', component: PrivacidadComponent },
