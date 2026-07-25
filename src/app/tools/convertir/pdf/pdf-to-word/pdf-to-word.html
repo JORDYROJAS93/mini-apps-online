@@ -1,1 +1,100 @@
-<p>pdf-to-word works!</p>
+<section class="converter-page-container" aria-labelledby="converter-title">
+  <article class="converter-card">
+    
+    <header class="converter-header">
+      <h1 id="converter-title" class="converter-title">Convertidor de PDF a Word</h1>
+      <p class="converter-subtitle">Transforma tus archivos PDF en documentos de Word (.docx) editables al instante. Modifica textos con facilidad.</p>
+    </header>
+
+    @if (converterService.hasError()) {
+      <div role="alert" class="error-box animate-shake">
+        <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+        <span>{{ errorMessage }}</span>
+        <button type="button" class="error-dismiss" (click)="resetConverter()" aria-label="Cerrar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    }
+
+    @if (state === 'idle' || converterService.hasError()) {
+      <div 
+        #fileDropZone
+        class="dropzone-area-word"
+        [class.dropzone-dragover-word]="isDragging()"
+        tabindex="0"
+        role="button"
+        aria-label="Arrastra tu archivo PDF o presiona Enter para buscar"
+        (click)="triggerFileInput()"
+        (keydown.enter)="triggerFileInput()"
+        (keydown.space)="triggerFileInput(); $event.preventDefault()">
+        
+        <label class="dropzone-label">
+          <div class="dropzone-icon-circle-word" aria-hidden="true">
+            <i class="fa-solid fa-file-pdf text-sky-600 text-3xl"></i>
+          </div>
+          <span class="dropzone-text-primary">Arrastra tu archivo PDF aquí</span>
+          <span class="dropzone-text-secondary">o haz clic para buscar archivo</span>
+          <span class="dropzone-hint">Conversión a DOCX • Procesamiento 100% local y privado</span>
+        </label>
+        
+        <input 
+          type="file" 
+          #fileInput
+          (change)="onFileInput($event)" 
+          accept=".pdf" 
+          class="hidden-input"
+          style="display: none;" />
+      </div>
+    }
+
+    @if (isProcessing) {
+      <div class="processing-box" role="status" aria-live="polite">
+        <div class="processing-header">
+          <div class="spinner-word" aria-hidden="true"></div>
+          <div class="processing-info">
+            <p class="processing-title">Analizando y extrayendo estructura de texto...</p>
+            <p class="processing-filename" [title]="fileName">{{ fileName }}</p>
+          </div>
+        </div>
+        
+        <div class="progress-track">
+          <div class="progress-fill-word" [style.width.%]="progress"></div>
+        </div>
+        <span class="progress-text-word">{{ progress }}% completado</span>
+      </div>
+    }
+
+    @if (converterService.isSuccess()) {
+      <div class="success-section animate-fadeIn" role="status">
+        
+        <div class="success-header">
+          <div class="success-icon-badge-word" aria-hidden="true">
+            <i class="fa-solid fa-file-word text-sky-600 text-5xl"></i>
+          </div>
+          <div>
+            <h2 class="success-title">¡Documento Generado!</h2>
+            <p class="success-description">
+              Tu archivo Word se ha procesado y tu descarga debería haber iniciado automáticamente.
+            </p>
+          </div>
+        </div>
+
+        <div class="word-file-preview-box">
+          <div class="flex items-center gap-3 bg-slate-50 border border-slate-100 p-4 rounded-xl">
+            <i class="fa-solid fa-file-lines text-sky-500 text-2xl"></i>
+            <div class="min-w-0 flex-1 text-left">
+              <p class="text-sm font-semibold text-gray-800 truncate">{{ fileName.replace('.pdf', '') }}.docx</p>
+              <p class="text-xs text-gray-400">Documento de Microsoft Word editable</p>
+            </div>
+          </div>
+        </div>
+
+        <button (click)="resetConverter()" class="btn-reset">
+          <i class="fa-solid fa-rotate-left"></i>
+          Convertir otro PDF
+        </button>
+      </div>
+    }
+
+  </article>
+</section>

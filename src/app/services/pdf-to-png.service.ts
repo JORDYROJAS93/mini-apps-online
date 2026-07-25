@@ -26,11 +26,11 @@ export class PdfToPngService {
   readonly result = signal<ConversionResult | null>(null);
   readonly fileName = signal('');
   readonly currentPage = signal(0);
-  
+
   readonly isProcessing = computed(() => this.state() === 'processing');
   readonly isSuccess = computed(() => this.state() === 'success');
   readonly hasError = computed(() => this.state() === 'error');
-  
+
   readonly errorMessage = computed(() => {
     const code = this.error();
     if (!code) return '';
@@ -42,7 +42,7 @@ export class PdfToPngService {
     invalid_format: 'Solo se permiten archivos PDF. Por favor, selecciona otro archivo.',
     file_too_large: 'El archivo supera el límite de 50MB.',
     conversion_failed: 'No pudimos procesar el PDF. Verifica que no esté corrupto.',
-    no_pages: 'El PDF no contiene páginas válidas.'
+    no_pages: 'El PDF no contiene páginas válidas.',
   };
 
   private pdfjsEngine: any = null;
@@ -58,12 +58,12 @@ export class PdfToPngService {
   private async initPdfEngine(): Promise<boolean> {
     if (this.pdfjsEngine) return true;
     try {
-      const pdfjs = await import('pdfjs-dist');
-      // @ts-ignore
-      const pdfjsWorkerContent = await import('pdfjs-dist/build/pdf.worker.mjs?raw');
-      const blob = new Blob([pdfjsWorkerContent.default], { type: 'text/javascript' });
-      pdfjs.GlobalWorkerOptions.workerSrc = URL.createObjectURL(blob);
-      this.pdfjsEngine = pdfjs;
+      const pdfjsLib = await import('pdfjs-dist');
+      
+      // CORREGIDO: Apuntamos directo al archivo físico local
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/pdf.worker.mjs';
+
+      this.pdfjsEngine = pdfjsLib;
       return true;
     } catch (e) {
       console.error('Error inicializando motor PDF.js local:', e);
@@ -107,7 +107,7 @@ export class PdfToPngService {
     try {
       const arrayBuffer = await file.arrayBuffer();
       const pdf = await this.pdfjsEngine.getDocument({ data: arrayBuffer }).promise;
-      
+
       const totalPages = pdf.numPages;
       if (totalPages === 0) {
         this.setError('no_pages');
@@ -125,27 +125,24 @@ export class PdfToPngService {
 
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
-        
+
         if (!context) throw new Error('No canvas context');
 
         canvas.height = viewport.height;
         canvas.width = viewport.width;
 
-        // 💡 NOTA: No rellenamos con fondo blanco para conservar transparencias en el PNG
-
         await page.render({
           canvas: canvas,
-          viewport: viewport
+          viewport: viewport,
         }).promise;
 
-        // 👈 Cambiado a image/png
         const dataUrl = canvas.toDataURL('image/png');
-        
+
         images.push({
           pageNumber: pageNum,
           dataUrl,
           width: canvas.width,
-          height: canvas.height
+          height: canvas.height,
         });
 
         canvas.remove();
@@ -155,12 +152,11 @@ export class PdfToPngService {
         originalName: file.name.replace('.pdf', ''),
         images,
         totalPages,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       });
 
       this.state.set('success');
       this.progress.set(100);
-
     } catch (error) {
       console.error('PDF to PNG error:', error);
       this.setError('conversion_failed');

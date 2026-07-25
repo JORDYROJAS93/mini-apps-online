@@ -1,0 +1,131 @@
+/* ==========================================================================
+   ESTRUCTURA UNIFICADA PARA CONVERTIDOR DE PDF A WORD
+   ========================================================================== */
+
+.converter-page-container {
+  @apply min-h-[calc(100vh-4rem)] bg-slate-50/50 py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-start;
+}
+
+.converter-card {
+  @apply w-full max-w-4xl bg-white rounded-3xl border border-gray-100 shadow-xl shadow-slate-200/50 p-6 sm:p-10 transition-all;
+}
+
+.converter-header {
+  @apply text-center mb-8 max-w-2xl mx-auto;
+}
+
+.converter-title {
+  @apply text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-2;
+}
+
+.converter-subtitle {
+  @apply text-sm sm:text-base text-gray-500 leading-relaxed;
+}
+
+/* Área Dropzone (Carga Celeste Sky de Word) */
+.dropzone-area-word {
+  @apply border-2 border-dashed border-gray-200 hover:border-sky-500 bg-white rounded-3xl p-8 sm:p-12 text-center cursor-pointer transition-all outline-none focus:ring-4 focus:ring-sky-500/10 block w-full;
+}
+
+.dropzone-dragover-word {
+  @apply border-sky-500 bg-sky-50/30 scale-[0.99];
+}
+
+.dropzone-label {
+  @apply flex flex-col items-center justify-center cursor-pointer w-full h-full select-none;
+}
+
+.dropzone-icon-circle-word {
+  @apply w-16 h-16 bg-sky-50 rounded-2xl flex items-center justify-center mb-4 shadow-sm transition-transform;
+}
+
+.dropzone-area-word:hover .dropzone-icon-circle-word {
+  @apply scale-110;
+}
+
+.dropzone-text-primary {
+  @apply text-base sm:text-lg font-semibold text-gray-800 mb-1;
+}
+
+.dropzone-text-secondary {
+  @apply text-xs sm:text-sm text-gray-400 mb-4;
+}
+
+.dropzone-hint {
+  @apply text-xs text-gray-400 bg-slate-50 border border-slate-100 px-3 py-1.5 rounded-full;
+}
+
+/* Estado de procesamiento */
+.processing-box {
+  @apply bg-slate-50/50 border border-slate-100 rounded-3xl p-6 sm:p-8 text-center flex flex-col items-center justify-center my-6;
+}
+
+.processing-header {
+  @apply flex flex-col sm:flex-row items-center gap-4 text-left w-full mb-6 max-w-md mx-auto;
+}
+
+.spinner-word {
+  @apply w-10 h-10 border-4 border-slate-200 border-t-sky-600 rounded-full animate-spin flex-shrink-0;
+}
+
+.processing-info {
+  @apply text-center sm:text-left min-w-0 flex-1;
+}
+
+.processing-title {
+  @apply text-base font-semibold text-gray-800 mb-0.5;
+}
+
+.processing-filename {
+  @apply text-xs text-gray-400 truncate max-w-[250px] sm:max-w-xs mx-auto sm:mx-0;
+}
+
+.progress-track {
+  @apply w-full h-2.5 bg-gray-100 rounded-full overflow-hidden mb-2 max-w-md mx-auto;
+}
+
+.progress-fill-word {
+  @apply h-full bg-sky-500 transition-all duration-300 rounded-full;
+}
+
+.progress-text-word {
+  @apply text-xs font-bold text-sky-600 bg-sky-50 px-2.5 py-1 rounded-full;
+}
+
+/* Errores */
+.error-box {
+  @apply flex items-center gap-3 p-4 mb-6 text-sm text-red-800 border border-red-100 rounded-2xl bg-red-50/50;
+}
+
+.error-dismiss {
+  @apply ml-auto -mx-1.5 -my-1.5 bg-transparent text-red-500 hover:bg-red-100 rounded-xl p-1.5 inline-flex items-center justify-center h-8 w-8 transition-colors;
+}
+
+/* Éxito */
+.success-section {
+  @apply space-y-6;
+}
+
+.success-header {
+  @apply flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left border-b border-gray-100 pb-6 mb-6;
+}
+
+.success-icon-badge-word {
+  @apply w-16 h-16 bg-sky-50 rounded-2xl flex items-center justify-center shadow-sm;
+}
+
+.success-title {
+  @apply text-xl font-bold text-gray-900 mb-1;
+}
+
+.success-description {
+  @apply text-sm text-gray-500;
+}
+
+.word-file-preview-box {
+  @apply max-w-md mx-auto w-full;
+}
+
+.btn-reset {
+  @apply mt-6 flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800 transition-colors mx-auto;
+}

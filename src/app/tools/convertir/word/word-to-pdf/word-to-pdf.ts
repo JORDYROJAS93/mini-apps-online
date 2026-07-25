@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, effect, signal, Inject, PLATFORM_ID, AfterViewInit } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { WordPdfService, ConversionState, ConversionResult } from '../../../../services/word-pdf.service';
+import { ConversionState, ConversionResult, WordPdfService } from '../../../../services/word-pdf.service';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
@@ -279,6 +279,8 @@ const options = {
       this.dropZoneRef?.nativeElement?.focus();
     }, 100);
   }
+
+  
 
   get state(): ConversionState { return this.converterService.state(); }
   get progress(): number { return this.converterService.progress(); }
